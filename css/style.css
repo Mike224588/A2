@@ -45,36 +45,91 @@ a:hover { text-decoration: underline; }
 
 p { max-width: 70ch; }
 
-/* ---------------- Hero ---------------- */
+/* ---------------- Hero (full-bleed navy banner) ---------------- */
 .hero {
-  padding: 56px 0 40px;
-  border-bottom: 1px solid var(--rule);
+  position: relative;
+  width: 100%;
+  padding: 72px 24px 64px;
+  text-align: center;
+  color: #f4f8fc;
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(64, 132, 196, 0.30) 0%, rgba(64, 132, 196, 0) 55%),
+    linear-gradient(160deg, #0a2540 0%, #0d3a63 55%, #0a2c4d 100%);
+  background-color: #0a2540;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #e0a13c 0%, #f0c277 50%, #e0a13c 100%);
+  opacity: 0.9;
+}
+
+.hero-inner {
+  width: min(var(--max), calc(100% - 16px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.22em;
   font-size: 12px;
   font-weight: 600;
-  color: var(--accent);
-  margin: 0 0 18px;
-}
-
-h1 {
-  font-size: clamp(38px, 6vw, 68px);
-  font-weight: 600;
+  color: #bcd4ec;
   margin: 0 0 22px;
 }
 
-.subtitle {
-  font-size: clamp(18px, 2.2vw, 22px);
-  line-height: 1.5;
-  color: var(--muted);
-  max-width: 60ch;
-  margin: 0;
+.eyebrow-mark {
+  display: inline-block;
+  width: 34px;
+  height: 2px;
+  background: #e0a13c;
 }
 
-.subtitle strong { color: var(--ink); font-weight: 600; }
+.hero h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(44px, 8vw, 92px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  margin: 0 auto 18px;
+  max-width: 16ch;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+}
+
+.hero-tagline {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(19px, 2.6vw, 27px);
+  color: #cfe0f1;
+  margin: 0 auto;
+  max-width: 40ch;
+}
+
+/* Intro paragraph that sits below the banner */
+.hero-lede {
+  font-size: clamp(18px, 2.1vw, 21px);
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 64ch;
+  margin: 38px 0 8px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero-lede strong { color: var(--ink); font-weight: 600; }
 
 /* ---------------- KPI cards ---------------- */
 .kpis {
