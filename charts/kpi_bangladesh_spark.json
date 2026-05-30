@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sparkline of Bangladesh enrolments 2019-2025.",
+  "width": "container",
+  "height": 44,
+  "data": { "url": "data/05_nat_year_stream.csv" },
+  "transform": [{ "filter": "datum.nationality == 'Bangladesh'" }],
+  "layer": [
+    {
+      "mark": { "type": "area", "interpolate": "monotone", "color": "#b07aa1", "opacity": 0.4 },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative", "axis": null, "scale": { "nice": false } },
+        "y": { "field": "enrolments", "type": "quantitative", "axis": null }
+      }
+    },
+    {
+      "mark": { "type": "line", "interpolate": "monotone", "color": "#7d3c6e", "strokeWidth": 2 },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative", "axis": null, "scale": { "nice": false } },
+        "y": { "field": "enrolments", "type": "quantitative", "axis": null }
+      }
+    }
+  ],
+  "view": { "stroke": null }
+}

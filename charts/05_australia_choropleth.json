@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth of Australian states and territories shaded by international student enrolments per 100,000 residents, 2025. Combines Department of Education enrolment data with ABS resident population.",
+  "width": "container",
+  "height": 460,
+  "projection": { "type": "mercator", "center": [134, -28], "scale": 720 },
+  "layer": [
+    {
+      "description": "State polygons shaded by enrolments per 100,000 residents.",
+      "data": {
+        "url": "data/au_states.geojson",
+        "format": { "type": "json", "property": "features" }
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": { "url": "data/02_state_2025.csv" },
+            "key": "state",
+            "fields": ["state_code", "enrolments", "population_2025", "per_100k"]
+          }
+        }
+      ],
+      "mark": { "type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1 },
+      "encoding": {
+        "color": {
+          "field": "per_100k",
+          "type": "quantitative",
+          "title": "Per 100,000 residents",
+          "scale": { "scheme": "tealblues" },
+          "legend": { "orient": "bottom-left", "gradientLength": 160 }
+        },
+        "tooltip": [
+          { "field": "properties.STATE_NAME", "type": "nominal", "title": "State" },
+          { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," },
+          { "field": "population_2025", "type": "quantitative", "title": "Population", "format": "," },
+          { "field": "per_100k", "type": "quantitative", "title": "Per 100,000", "format": ",.0f" }
+        ]
+      }
+    },
+    {
+      "description": "State code labels positioned at approximate state centroids.",
+      "data": {
+        "values": [
+          { "code": "NSW", "lon": 146.8, "lat": -32.5 },
+          { "code": "VIC", "lon": 144.5, "lat": -36.8 },
+          { "code": "QLD", "lon": 144.2, "lat": -22.5 },
+          { "code": "WA", "lon": 121.5, "lat": -25.5 },
+          { "code": "SA", "lon": 135.5, "lat": -30 },
+          { "code": "NT", "lon": 133.5, "lat": -19.5 },
+          { "code": "TAS", "lon": 146.7, "lat": -42.2 },
+          { "code": "ACT", "lon": 149.1, "lat": -35.5 }
+        ]
+      },
+      "mark": { "type": "text", "fontSize": 11, "fontWeight": "bold", "fill": "#1a2e2c" },
+      "encoding": {
+        "longitude": { "field": "lon", "type": "quantitative" },
+        "latitude": { "field": "lat", "type": "quantitative" },
+        "text": { "field": "code", "type": "nominal" }
+      }
+    }
+  ]
+}

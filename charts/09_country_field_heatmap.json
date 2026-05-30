@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Denser heatmap of the top 15 source countries by broad field of education, 2025. Colour is log-scaled to reveal the long tail.",
+  "width": "container",
+  "height": 440,
+  "data": { "url": "data/09_country_field_heatmap.csv" },
+  "transform": [{ "filter": "datum.field !== '_Dual Qualification'" }],
+  "mark": { "type": "rect", "stroke": "#ffffff", "strokeWidth": 0.8 },
+  "encoding": {
+    "y": {
+      "field": "nationality",
+      "type": "nominal",
+      "title": null,
+      "sort": { "op": "sum", "field": "enrolments", "order": "descending" },
+      "axis": { "labelFontSize": 12 }
+    },
+    "x": {
+      "field": "field",
+      "type": "nominal",
+      "title": null,
+      "sort": { "op": "sum", "field": "enrolments", "order": "descending" },
+      "axis": { "labelAngle": -40, "labelFontSize": 10, "labelLimit": 150 }
+    },
+    "color": {
+      "field": "enrolments",
+      "type": "quantitative",
+      "scale": { "type": "log", "scheme": "tealblues", "domainMin": 1 },
+      "title": "Enrolments (log scale)",
+      "legend": { "orient": "bottom", "gradientLength": 200, "format": "~s" }
+    },
+    "tooltip": [
+      { "field": "nationality", "type": "nominal", "title": "Country" },
+      { "field": "field", "type": "nominal", "title": "Field of education" },
+      { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+    ]
+  }
+}

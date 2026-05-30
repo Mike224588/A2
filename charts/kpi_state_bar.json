@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Micro stacked bar: New South Wales and Victoria versus the other six states and territories, 2025.",
+  "width": "container",
+  "height": 26,
+  "data": {
+    "values": [
+      { "group": "NSW + VIC", "enrolments": 724583, "ord": 1 },
+      { "group": "Other states", "enrolments": 332070, "ord": 2 }
+    ]
+  },
+  "mark": { "type": "bar", "height": 22 },
+  "encoding": {
+    "x": { "field": "enrolments", "type": "quantitative", "stack": "normalize", "axis": null },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "scale": { "domain": ["NSW + VIC", "Other states"], "range": ["#0c4a44", "#dde6e8"] },
+      "legend": null
+    },
+    "order": { "field": "ord", "type": "quantitative" },
+    "tooltip": [
+      { "field": "group", "type": "nominal", "title": "Group" },
+      { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+    ]
+  },
+  "view": { "stroke": null }
+}

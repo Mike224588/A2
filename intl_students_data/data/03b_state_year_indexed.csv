@@ -1,0 +1,57 @@
+state_code,state,year,enrolments,pct_of_2019
+ACT,Australian Capital Territory,2019,18844,100.0
+ACT,Australian Capital Territory,2020,17213,91.3
+ACT,Australian Capital Territory,2021,17027,90.4
+ACT,Australian Capital Territory,2022,18256,96.9
+ACT,Australian Capital Territory,2023,21015,111.5
+ACT,Australian Capital Territory,2024,22551,119.7
+ACT,Australian Capital Territory,2025,21680,115.0
+NSW,New South Wales,2019,364821,100.0
+NSW,New South Wales,2020,335833,92.1
+NSW,New South Wales,2021,272694,74.7
+NSW,New South Wales,2022,289913,79.5
+NSW,New South Wales,2023,371891,101.9
+NSW,New South Wales,2024,415407,113.9
+NSW,New South Wales,2025,402660,110.4
+NT,Northern Territory,2019,3659,100.0
+NT,Northern Territory,2020,4707,128.6
+NT,Northern Territory,2021,4403,120.3
+NT,Northern Territory,2022,4193,114.6
+NT,Northern Territory,2023,5573,152.3
+NT,Northern Territory,2024,5718,156.3
+NT,Northern Territory,2025,6001,164.0
+QLD,Queensland,2019,144563,100.0
+QLD,Queensland,2020,128044,88.6
+QLD,Queensland,2021,98912,68.4
+QLD,Queensland,2022,107027,74.0
+QLD,Queensland,2023,147555,102.1
+QLD,Queensland,2024,157196,108.7
+QLD,Queensland,2025,148432,102.7
+SA,South Australia,2019,44298,100.0
+SA,South Australia,2020,45444,102.6
+SA,South Australia,2021,40596,91.6
+SA,South Australia,2022,42952,97.0
+SA,South Australia,2023,54521,123.1
+SA,South Australia,2024,59285,133.8
+SA,South Australia,2025,57004,128.7
+TAS,Tasmania,2019,15507,100.0
+TAS,Tasmania,2020,16049,103.5
+TAS,Tasmania,2021,14091,90.9
+TAS,Tasmania,2022,12563,81.0
+TAS,Tasmania,2023,10660,68.7
+TAS,Tasmania,2024,10261,66.2
+TAS,Tasmania,2025,9408,60.7
+VIC,Victoria,2019,307332,100.0
+VIC,Victoria,2020,282720,92.0
+VIC,Victoria,2021,227220,73.9
+VIC,Victoria,2022,222329,72.3
+VIC,Victoria,2023,285896,93.0
+VIC,Victoria,2024,327815,106.7
+VIC,Victoria,2025,321923,104.7
+WA,Western Australia,2019,53368,100.0
+WA,Western Australia,2020,49864,93.4
+WA,Western Australia,2021,40849,76.5
+WA,Western Australia,2022,44840,84.0
+WA,Western Australia,2023,71850,134.6
+WA,Western Australia,2024,90258,169.1
+WA,Western Australia,2025,89545,167.8

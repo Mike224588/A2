@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stream graph of the top 10 source countries (plus an 'Other' residual) of international students, 2019-2025.",
+  "width": "container",
+  "height": 380,
+  "data": { "url": "data/05_nat_year_stream.csv" },
+  "mark": { "type": "area", "interpolate": "monotone" },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": null,
+      "scale": { "zero": false, "nice": false },
+      "axis": { "format": "d", "values": [2019, 2020, 2021, 2022, 2023, 2024, 2025], "grid": false }
+    },
+    "y": {
+      "field": "enrolments",
+      "type": "quantitative",
+      "stack": "center",
+      "axis": null,
+      "title": null
+    },
+    "color": {
+      "field": "nationality",
+      "type": "nominal",
+      "title": "Country",
+      "scale": {
+        "domain": ["China", "India", "Nepal", "Philippines", "Vietnam", "Colombia", "Bangladesh", "Pakistan", "Indonesia", "Brazil", "Other"],
+        "range": ["#4e79a7", "#f28e2b", "#59a14f", "#e15759", "#76b7b2", "#edc948", "#b07aa1", "#ff9da7", "#9c755f", "#bab0ac", "#e0e0e0"]
+      },
+      "legend": { "orient": "right", "symbolType": "square" }
+    },
+    "order": { "field": "nationality", "type": "nominal" },
+    "tooltip": [
+      { "field": "nationality", "type": "nominal", "title": "Country" },
+      { "field": "year", "type": "quantitative", "title": "Year", "format": "d" },
+      { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sparkline of total enrolments 2019-2025.",
+  "width": "container",
+  "height": 44,
+  "data": { "url": "data/01_annual_totals.csv" },
+  "layer": [
+    {
+      "mark": { "type": "area", "interpolate": "monotone", "color": "#9ad1cb", "opacity": 0.5 },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative", "axis": null, "scale": { "nice": false } },
+        "y": { "field": "enrolments", "type": "quantitative", "axis": null }
+      }
+    },
+    {
+      "mark": { "type": "line", "interpolate": "monotone", "color": "#0c4a44", "strokeWidth": 2 },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative", "axis": null, "scale": { "nice": false } },
+        "y": { "field": "enrolments", "type": "quantitative", "axis": null }
+      }
+    }
+  ],
+  "view": { "stroke": null }
+}

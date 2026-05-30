@@ -1,0 +1,196 @@
+nationality,field,enrolments
+China,Management and Commerce,70064
+China,Society and Culture,45923
+China,Information Technology,22394
+China,Engineering and Related Technologies,17224
+China,Education,11338
+China,Health,6379
+China,Mixed Field Programmes,17448
+China,"Food, Hospitality and Personal Services",2232
+China,Architecture and Building,5511
+China,Natural and Physical Sciences,11788
+China,Creative Arts,13897
+China,_Dual Qualification,1879
+China,"Agriculture, Environmental and Related Studies",1271
+India,Management and Commerce,50430
+India,Society and Culture,10457
+India,Information Technology,31083
+India,Engineering and Related Technologies,21298
+India,Education,13023
+India,Health,14965
+India,Mixed Field Programmes,1534
+India,"Food, Hospitality and Personal Services",11002
+India,Architecture and Building,18581
+India,Natural and Physical Sciences,5787
+India,Creative Arts,1252
+India,_Dual Qualification,1618
+India,"Agriculture, Environmental and Related Studies",977
+Nepal,Management and Commerce,27077
+Nepal,Society and Culture,11930
+Nepal,Information Technology,17575
+Nepal,Engineering and Related Technologies,4503
+Nepal,Education,10669
+Nepal,Health,9322
+Nepal,Mixed Field Programmes,318
+Nepal,"Food, Hospitality and Personal Services",4816
+Nepal,Architecture and Building,1282
+Nepal,Natural and Physical Sciences,899
+Nepal,Creative Arts,196
+Nepal,_Dual Qualification,199
+Nepal,"Agriculture, Environmental and Related Studies",509
+Philippines,Management and Commerce,14068
+Philippines,Society and Culture,8991
+Philippines,Information Technology,2701
+Philippines,Engineering and Related Technologies,4438
+Philippines,Education,5704
+Philippines,Health,2848
+Philippines,Mixed Field Programmes,331
+Philippines,"Food, Hospitality and Personal Services",7060
+Philippines,Architecture and Building,575
+Philippines,Natural and Physical Sciences,414
+Philippines,Creative Arts,241
+Philippines,_Dual Qualification,127
+Philippines,"Agriculture, Environmental and Related Studies",116
+Vietnam,Management and Commerce,15730
+Vietnam,Society and Culture,5797
+Vietnam,Information Technology,4545
+Vietnam,Engineering and Related Technologies,2181
+Vietnam,Education,3306
+Vietnam,Health,1736
+Vietnam,Mixed Field Programmes,5028
+Vietnam,"Food, Hospitality and Personal Services",2760
+Vietnam,Architecture and Building,812
+Vietnam,Natural and Physical Sciences,1141
+Vietnam,Creative Arts,1493
+Vietnam,_Dual Qualification,663
+Vietnam,"Agriculture, Environmental and Related Studies",114
+Colombia,Management and Commerce,11923
+Colombia,Society and Culture,15255
+Colombia,Information Technology,1907
+Colombia,Engineering and Related Technologies,3349
+Colombia,Education,1942
+Colombia,Health,322
+Colombia,Mixed Field Programmes,141
+Colombia,"Food, Hospitality and Personal Services",2378
+Colombia,Architecture and Building,1593
+Colombia,Natural and Physical Sciences,190
+Colombia,Creative Arts,541
+Colombia,_Dual Qualification,80
+Colombia,"Agriculture, Environmental and Related Studies",159
+Bangladesh,Management and Commerce,6430
+Bangladesh,Society and Culture,3518
+Bangladesh,Information Technology,12301
+Bangladesh,Engineering and Related Technologies,3912
+Bangladesh,Education,1486
+Bangladesh,Health,1128
+Bangladesh,Mixed Field Programmes,577
+Bangladesh,"Food, Hospitality and Personal Services",785
+Bangladesh,Architecture and Building,921
+Bangladesh,Natural and Physical Sciences,968
+Bangladesh,Creative Arts,106
+Bangladesh,_Dual Qualification,157
+Bangladesh,"Agriculture, Environmental and Related Studies",188
+Pakistan,Management and Commerce,5960
+Pakistan,Society and Culture,2546
+Pakistan,Information Technology,5255
+Pakistan,Engineering and Related Technologies,7144
+Pakistan,Education,2334
+Pakistan,Health,1020
+Pakistan,Mixed Field Programmes,330
+Pakistan,"Food, Hospitality and Personal Services",1023
+Pakistan,Architecture and Building,5278
+Pakistan,Natural and Physical Sciences,541
+Pakistan,Creative Arts,78
+Pakistan,_Dual Qualification,113
+Pakistan,"Agriculture, Environmental and Related Studies",116
+Indonesia,Management and Commerce,13643
+Indonesia,Society and Culture,2949
+Indonesia,Information Technology,2446
+Indonesia,Engineering and Related Technologies,1661
+Indonesia,Education,1829
+Indonesia,Health,695
+Indonesia,Mixed Field Programmes,973
+Indonesia,"Food, Hospitality and Personal Services",3630
+Indonesia,Architecture and Building,700
+Indonesia,Natural and Physical Sciences,1379
+Indonesia,Creative Arts,1197
+Indonesia,_Dual Qualification,239
+Indonesia,"Agriculture, Environmental and Related Studies",224
+Brazil,Management and Commerce,9468
+Brazil,Society and Culture,11728
+Brazil,Information Technology,2020
+Brazil,Engineering and Related Technologies,1402
+Brazil,Education,1397
+Brazil,Health,296
+Brazil,Mixed Field Programmes,540
+Brazil,"Food, Hospitality and Personal Services",1370
+Brazil,Architecture and Building,1333
+Brazil,Natural and Physical Sciences,147
+Brazil,Creative Arts,487
+Brazil,_Dual Qualification,49
+Brazil,"Agriculture, Environmental and Related Studies",77
+Thailand,Management and Commerce,15054
+Thailand,Society and Culture,5201
+Thailand,Information Technology,991
+Thailand,Engineering and Related Technologies,702
+Thailand,Education,1270
+Thailand,Health,523
+Thailand,Mixed Field Programmes,433
+Thailand,"Food, Hospitality and Personal Services",3775
+Thailand,Architecture and Building,315
+Thailand,Natural and Physical Sciences,271
+Thailand,Creative Arts,347
+Thailand,_Dual Qualification,83
+Thailand,"Agriculture, Environmental and Related Studies",34
+Sri Lanka,Management and Commerce,5750
+Sri Lanka,Society and Culture,1704
+Sri Lanka,Information Technology,5033
+Sri Lanka,Engineering and Related Technologies,4847
+Sri Lanka,Education,1846
+Sri Lanka,Health,1518
+Sri Lanka,Mixed Field Programmes,656
+Sri Lanka,"Food, Hospitality and Personal Services",1722
+Sri Lanka,Architecture and Building,835
+Sri Lanka,Natural and Physical Sciences,1095
+Sri Lanka,Creative Arts,160
+Sri Lanka,_Dual Qualification,282
+Sri Lanka,"Agriculture, Environmental and Related Studies",137
+Malaysia,Management and Commerce,6474
+Malaysia,Society and Culture,1703
+Malaysia,Information Technology,1358
+Malaysia,Engineering and Related Technologies,1114
+Malaysia,Education,1179
+Malaysia,Health,1131
+Malaysia,Mixed Field Programmes,1113
+Malaysia,"Food, Hospitality and Personal Services",924
+Malaysia,Architecture and Building,585
+Malaysia,Natural and Physical Sciences,1164
+Malaysia,Creative Arts,541
+Malaysia,_Dual Qualification,407
+Malaysia,"Agriculture, Environmental and Related Studies",87
+South Korea,Management and Commerce,4182
+South Korea,Society and Culture,4157
+South Korea,Information Technology,965
+South Korea,Engineering and Related Technologies,613
+South Korea,Education,662
+South Korea,Health,1852
+South Korea,Mixed Field Programmes,1682
+South Korea,"Food, Hospitality and Personal Services",1621
+South Korea,Architecture and Building,507
+South Korea,Natural and Physical Sciences,325
+South Korea,Creative Arts,353
+South Korea,_Dual Qualification,247
+South Korea,"Agriculture, Environmental and Related Studies",46
+Bhutan,Management and Commerce,5669
+Bhutan,Society and Culture,2847
+Bhutan,Information Technology,1322
+Bhutan,Engineering and Related Technologies,1289
+Bhutan,Education,998
+Bhutan,Health,1531
+Bhutan,Mixed Field Programmes,96
+Bhutan,"Food, Hospitality and Personal Services",646
+Bhutan,Architecture and Building,306
+Bhutan,Natural and Physical Sciences,181
+Bhutan,Creative Arts,233
+Bhutan,_Dual Qualification,103
+Bhutan,"Agriculture, Environmental and Related Studies",231

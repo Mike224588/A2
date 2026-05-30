@@ -1,0 +1,41 @@
+state_code,state,sector,enrolments
+VIC,Victoria,Higher Education,168917
+QLD,Queensland,Higher Education,63620
+NSW,New South Wales,VET,136377
+QLD,Queensland,VET,53758
+NSW,New South Wales,Higher Education,211305
+WA,Western Australia,ELICOS,7297
+VIC,Victoria,VET,111887
+WA,Western Australia,VET,31489
+WA,Western Australia,Higher Education,47627
+SA,South Australia,Higher Education,31357
+QLD,Queensland,Schools,5626
+VIC,Victoria,ELICOS,25114
+QLD,Queensland,ELICOS,20826
+SA,South Australia,VET,17088
+TAS,Tasmania,Schools,375
+ACT,Australian Capital Territory,VET,5163
+TAS,Tasmania,Higher Education,3137
+NSW,New South Wales,ELICOS,34575
+ACT,Australian Capital Territory,Higher Education,14616
+NSW,New South Wales,Non-award,16256
+VIC,Victoria,Non-award,9627
+SA,South Australia,ELICOS,4026
+QLD,Queensland,Non-award,4602
+NSW,New South Wales,Schools,4147
+TAS,Tasmania,VET,5483
+NT,Northern Territory,Higher Education,4227
+TAS,Tasmania,Non-award,239
+SA,South Australia,Non-award,2062
+VIC,Victoria,Schools,6378
+SA,South Australia,Schools,2471
+ACT,Australian Capital Territory,Non-award,575
+WA,Western Australia,Schools,854
+WA,Western Australia,Non-award,2278
+NT,Northern Territory,VET,1541
+ACT,Australian Capital Territory,Schools,365
+ACT,Australian Capital Territory,ELICOS,961
+NT,Northern Territory,Schools,103
+TAS,Tasmania,ELICOS,174
+NT,Northern Territory,ELICOS,90
+NT,Northern Territory,Non-award,40

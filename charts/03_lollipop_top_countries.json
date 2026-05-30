@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top 20 source countries of international students in Australia, 2025, shown as a lollipop chart.",
+  "width": "container",
+  "height": 480,
+  "data": { "url": "data/04b_top20_nationalities_2025.csv" },
+  "encoding": {
+    "y": {
+      "field": "nationality",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": { "labelFontSize": 12 }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "rule", "color": "#9ad1cb", "strokeWidth": 2.5 },
+      "encoding": {
+        "x": {
+          "field": "enrolments",
+          "type": "quantitative",
+          "title": "Enrolments in 2025",
+          "axis": { "format": "~s", "grid": false }
+        },
+        "x2": { "datum": 0 }
+      }
+    },
+    {
+      "mark": { "type": "point", "filled": true, "size": 95, "color": "#0c4a44" },
+      "encoding": {
+        "x": { "field": "enrolments", "type": "quantitative" },
+        "tooltip": [
+          { "field": "nationality", "type": "nominal", "title": "Country" },
+          { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "align": "left", "dx": 9, "fontSize": 10.5, "fill": "#555" },
+      "encoding": {
+        "x": { "field": "enrolments", "type": "quantitative" },
+        "text": { "field": "enrolments", "type": "quantitative", "format": "," }
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of the top 15 source countries by education sector, 2025, revealing distinct migration-study patterns.",
+  "width": "container",
+  "height": 420,
+  "data": { "url": "data/08_country_sector_heatmap.csv" },
+  "encoding": {
+    "y": {
+      "field": "nationality",
+      "type": "nominal",
+      "title": null,
+      "sort": { "op": "sum", "field": "enrolments", "order": "descending" },
+      "axis": { "labelFontSize": 12 }
+    },
+    "x": {
+      "field": "sector",
+      "type": "nominal",
+      "title": null,
+      "sort": ["Higher Education", "VET", "ELICOS", "Non-award", "Schools"],
+      "axis": { "labelAngle": 0, "labelFontSize": 11, "orient": "top" }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "rect", "stroke": "#ffffff", "strokeWidth": 1.5 },
+      "encoding": {
+        "color": {
+          "field": "enrolments",
+          "type": "quantitative",
+          "title": "Enrolments",
+          "scale": { "scheme": "tealblues" },
+          "legend": { "orient": "bottom", "gradientLength": 200, "format": "~s" }
+        },
+        "tooltip": [
+          { "field": "nationality", "type": "nominal", "title": "Country" },
+          { "field": "sector", "type": "nominal", "title": "Sector" },
+          { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "fontSize": 10 },
+      "encoding": {
+        "text": { "field": "enrolments", "type": "quantitative", "format": ".3s" },
+        "color": {
+          "condition": { "test": "datum.enrolments > 60000", "value": "#ffffff" },
+          "value": "#1a2e2c"
+        }
+      }
+    }
+  ]
+}

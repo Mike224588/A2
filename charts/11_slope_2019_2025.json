@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Slope chart comparing the top 10 source countries between 2019 and 2025. Green lines grew; grey lines declined. Labels show the growth multiplier.",
+  "width": "container",
+  "height": 520,
+  "data": { "url": "data/12_slope_calc.csv" },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "scale": { "padding": 0.35 },
+      "axis": { "labelFontSize": 13, "labelFontWeight": "bold", "ticks": false, "domain": false, "labelAngle": 0 }
+    },
+    "y": {
+      "field": "enrolments",
+      "type": "quantitative",
+      "title": "Enrolments (log scale)",
+      "scale": { "type": "log" },
+      "axis": { "format": "~s", "grid": true, "gridColor": "#f0ece2" }
+    },
+    "color": {
+      "field": "direction",
+      "type": "nominal",
+      "title": null,
+      "scale": { "domain": ["Growth", "Decline"], "range": ["#1b6f6a", "#b0466b"] },
+      "legend": { "orient": "top-right" }
+    },
+    "detail": { "field": "nationality", "type": "nominal" }
+  },
+  "layer": [
+    {
+      "mark": { "type": "line", "strokeWidth": 2.5 },
+      "encoding": {
+        "tooltip": [
+          { "field": "nationality", "type": "nominal", "title": "Country" },
+          { "field": "year", "type": "ordinal", "title": "Year" },
+          { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "point", "filled": true, "size": 60 },
+      "encoding": {}
+    },
+    {
+      "description": "Country labels at the 2019 endpoint.",
+      "transform": [{ "filter": "datum.year == 2019" }],
+      "mark": { "type": "text", "align": "right", "dx": -9, "fontSize": 10.5 },
+      "encoding": { "text": { "field": "nationality", "type": "nominal" } }
+    },
+    {
+      "description": "Multiplier labels for the well-separated highlighted countries.",
+      "transform": [
+        { "filter": "datum.year == 2025 && indexof(['China','India','Nepal'], datum.nationality) >= 0" },
+        { "calculate": "datum.nationality + '  \u00d7' + datum.mult", "as": "endlabel" }
+      ],
+      "mark": { "type": "text", "align": "left", "dx": 9, "fontSize": 10.5, "fontWeight": "bold" },
+      "encoding": { "text": { "field": "endlabel", "type": "nominal" } }
+    },
+    {
+      "description": "Bangladesh label nudged up to clear Brazil.",
+      "transform": [
+        { "filter": "datum.year == 2025 && datum.nationality == 'Bangladesh'" },
+        { "calculate": "datum.nationality + '  \u00d7' + datum.mult", "as": "endlabel" }
+      ],
+      "mark": { "type": "text", "align": "left", "dx": 9, "dy": -9, "fontSize": 10.5, "fontWeight": "bold" },
+      "encoding": { "text": { "field": "endlabel", "type": "nominal" } }
+    },
+    {
+      "description": "Brazil label nudged down to clear Bangladesh.",
+      "transform": [
+        { "filter": "datum.year == 2025 && datum.nationality == 'Brazil'" },
+        { "calculate": "datum.nationality + '  \u00d7' + datum.mult", "as": "endlabel" }
+      ],
+      "mark": { "type": "text", "align": "left", "dx": 9, "dy": 10, "fontSize": 10.5, "fontWeight": "bold" },
+      "encoding": { "text": { "field": "endlabel", "type": "nominal" } }
+    }
+  ]
+}

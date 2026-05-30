@@ -1,0 +1,57 @@
+state_code,state,year,enrolments
+ACT,Australian Capital Territory,2019,18844
+ACT,Australian Capital Territory,2020,17213
+ACT,Australian Capital Territory,2021,17027
+ACT,Australian Capital Territory,2022,18256
+ACT,Australian Capital Territory,2023,21015
+ACT,Australian Capital Territory,2024,22551
+ACT,Australian Capital Territory,2025,21680
+NSW,New South Wales,2019,364821
+NSW,New South Wales,2020,335833
+NSW,New South Wales,2021,272694
+NSW,New South Wales,2022,289913
+NSW,New South Wales,2023,371891
+NSW,New South Wales,2024,415407
+NSW,New South Wales,2025,402660
+NT,Northern Territory,2019,3659
+NT,Northern Territory,2020,4707
+NT,Northern Territory,2021,4403
+NT,Northern Territory,2022,4193
+NT,Northern Territory,2023,5573
+NT,Northern Territory,2024,5718
+NT,Northern Territory,2025,6001
+QLD,Queensland,2019,144563
+QLD,Queensland,2020,128044
+QLD,Queensland,2021,98912
+QLD,Queensland,2022,107027
+QLD,Queensland,2023,147555
+QLD,Queensland,2024,157196
+QLD,Queensland,2025,148432
+SA,South Australia,2019,44298
+SA,South Australia,2020,45444
+SA,South Australia,2021,40596
+SA,South Australia,2022,42952
+SA,South Australia,2023,54521
+SA,South Australia,2024,59285
+SA,South Australia,2025,57004
+TAS,Tasmania,2019,15507
+TAS,Tasmania,2020,16049
+TAS,Tasmania,2021,14091
+TAS,Tasmania,2022,12563
+TAS,Tasmania,2023,10660
+TAS,Tasmania,2024,10261
+TAS,Tasmania,2025,9408
+VIC,Victoria,2019,307332
+VIC,Victoria,2020,282720
+VIC,Victoria,2021,227220
+VIC,Victoria,2022,222329
+VIC,Victoria,2023,285896
+VIC,Victoria,2024,327815
+VIC,Victoria,2025,321923
+WA,Western Australia,2019,53368
+WA,Western Australia,2020,49864
+WA,Western Australia,2021,40849
+WA,Western Australia,2022,44840
+WA,Western Australia,2023,71850
+WA,Western Australia,2024,90258
+WA,Western Australia,2025,89545

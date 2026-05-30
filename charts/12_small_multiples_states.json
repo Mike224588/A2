@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Small multiples showing each state's recovery indexed to its 2019 enrolments (2019 = 100). A dashed line marks the 2019 baseline.",
+  "data": { "url": "data/03b_state_year_indexed.csv" },
+  "columns": 4,
+  "facet": {
+    "field": "state_code",
+    "type": "nominal",
+    "title": null,
+    "sort": ["NSW", "VIC", "QLD", "WA", "SA", "ACT", "TAS", "NT"],
+    "header": { "labelFontSize": 12, "labelFontWeight": "bold", "labelColor": "#16302d" }
+  },
+  "spec": {
+    "width": 150,
+    "height": 110,
+    "layer": [
+      {
+        "description": "Baseline reference line at 100% (2019 level).",
+        "data": { "values": [{ "y": 100 }] },
+        "mark": { "type": "rule", "strokeDash": [4, 3], "color": "#b0466b", "strokeWidth": 1 },
+        "encoding": { "y": { "field": "y", "type": "quantitative" } }
+      },
+      {
+        "mark": { "type": "area", "interpolate": "monotone", "opacity": 0.18, "color": "#2f8e85" },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative",
+            "title": null,
+            "axis": { "format": "d", "values": [2019, 2025], "grid": false }
+          },
+          "y": {
+            "field": "pct_of_2019",
+            "type": "quantitative",
+            "title": "% of 2019",
+            "scale": { "domainMin": 60 },
+            "axis": { "grid": false, "tickCount": 4 }
+          }
+        }
+      },
+      {
+        "mark": { "type": "line", "interpolate": "monotone", "strokeWidth": 2, "color": "#0c4a44" },
+        "encoding": {
+          "x": { "field": "year", "type": "quantitative" },
+          "y": { "field": "pct_of_2019", "type": "quantitative" },
+          "tooltip": [
+            { "field": "state", "type": "nominal", "title": "State" },
+            { "field": "year", "type": "quantitative", "title": "Year", "format": "d" },
+            { "field": "pct_of_2019", "type": "quantitative", "title": "% of 2019", "format": ".1f" }
+          ]
+        }
+      }
+    ]
+  }
+}

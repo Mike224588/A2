@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Composition of international student enrolments by education sector, 2025, as a donut chart.",
+  "width": 360,
+  "height": 320,
+  "data": { "url": "data/06_sector_2025.csv" },
+  "transform": [
+    { "joinaggregate": [{ "op": "sum", "field": "enrolments", "as": "total" }] },
+    { "calculate": "datum.enrolments / datum.total", "as": "pct" }
+  ],
+  "encoding": {
+    "theta": { "field": "enrolments", "type": "quantitative", "stack": true },
+    "color": {
+      "field": "sector",
+      "type": "nominal",
+      "title": "Sector",
+      "sort": ["Higher Education", "VET", "ELICOS", "Non-award", "Schools"],
+      "scale": {
+        "domain": ["Higher Education", "VET", "ELICOS", "Schools", "Non-award"],
+        "range": ["#1b6f6a", "#e08a3c", "#4f86c6", "#b0466b", "#9aa0a6"]
+      },
+      "legend": { "orient": "right" }
+    },
+    "order": { "field": "enrolments", "type": "quantitative", "sort": "descending" }
+  },
+  "layer": [
+    {
+      "mark": { "type": "arc", "innerRadius": 75, "outerRadius": 130, "stroke": "#fff", "strokeWidth": 2 },
+      "encoding": {
+        "tooltip": [
+          { "field": "sector", "type": "nominal", "title": "Sector" },
+          { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," },
+          { "field": "pct", "type": "quantitative", "title": "Share", "format": ".1%" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "radius": 152, "fontSize": 11, "fontWeight": "bold" },
+      "encoding": {
+        "text": { "field": "pct", "type": "quantitative", "format": ".0%" },
+        "color": {
+          "field": "sector",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Higher Education", "VET", "ELICOS", "Schools", "Non-award"],
+            "range": ["#1b6f6a", "#e08a3c", "#4f86c6", "#b0466b", "#9aa0a6"]
+          },
+          "legend": null
+        }
+      }
+    }
+  ]
+}

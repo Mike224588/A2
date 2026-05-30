@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Australia's International Students — Where They Come From, Where They Study</title>
+  <meta name="description" content="A data story about international students in Australia: where they come from, where they study, and how the pattern has changed since 2019." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+<body>
+  <main class="page">
+
+    <!-- ============================ HERO ============================ -->
+    <header class="hero">
+      <p class="eyebrow">FIT2179 Data Visualisation 2 &middot; 2026</p>
+      <h1>One million students,<br />a thousand different journeys</h1>
+      <p class="subtitle">
+        International education is one of Australia's largest exports and a defining feature of its
+        cities. But "international students" is not one story &mdash; it is many. This page follows them
+        from <strong>where they come from</strong>, to <strong>where they study</strong>, to
+        <strong>what changed</strong> after the pandemic.
+      </p>
+    </header>
+
+    <!-- ============================ KPI CARDS ============================ -->
+    <section class="kpis" aria-label="Headline figures">
+      <article class="kpi">
+        <p class="kpi-number">1,056,653</p>
+        <p class="kpi-label">enrolments in 2025 &mdash; up 11% on pre-COVID 2019</p>
+        <div class="spark viz" data-spec="charts/kpi_enrolments_spark.json" aria-hidden="true"></div>
+      </article>
+      <article class="kpi">
+        <p class="kpi-number">38.7%</p>
+        <p class="kpi-label">came from just two countries: China and India</p>
+        <div class="spark viz" data-spec="charts/kpi_origin_bar.json" aria-hidden="true"></div>
+      </article>
+      <article class="kpi">
+        <p class="kpi-number">69%</p>
+        <p class="kpi-label">study in New South Wales or Victoria alone</p>
+        <div class="spark viz" data-spec="charts/kpi_state_bar.json" aria-hidden="true"></div>
+      </article>
+      <article class="kpi">
+        <p class="kpi-number">&times;4.1</p>
+        <p class="kpi-label">growth from Bangladesh since 2019 &mdash; the fastest-rising source</p>
+        <div class="spark viz" data-spec="charts/kpi_bangladesh_spark.json" aria-hidden="true"></div>
+      </article>
+    </section>
+
+    <!-- ============================ SECTION 1: SCALE ============================ -->
+    <section class="story">
+      <p class="section-num">01</p>
+      <h2>How big has international education become?</h2>
+      <p class="lede">
+        The story of the last six years is a deep V. Borders closed in March 2020, new
+        enrolments collapsed, and the sector hit its floor in 2021. The recovery was just as
+        sharp: 2024 set an all-time record before 2025 brought the first dip &mdash; small, but
+        arriving exactly as the government floated caps on enrolments. <em>Commencements</em>
+        (new starts) fall harder and recover faster than <em>total enrolments</em>, because
+        enrolments are a stock that lags the flow of new arrivals.
+      </p>
+      <figure class="chart wide">
+        <div class="viz" data-spec="charts/01_annual_line.json"></div>
+        <figcaption>
+          Total enrolments and new commencements, 2019&ndash;2025.
+          <a href="charts/01_annual_line.json">View spec</a>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ============================ SECTION 2: ORIGINS ============================ -->
+    <section class="story">
+      <p class="section-num">02</p>
+      <h2>Where do they come from?</h2>
+      <p class="lede">
+        The map of origins is dominated by an "Asian crescent" running from China through the
+        subcontinent and Southeast Asia, with a smaller cluster in South America. Africa,
+        Europe and North America barely register. Colour is on a logarithmic scale because the
+        gap between the leaders and the long tail is enormous.
+      </p>
+      <figure class="chart wide">
+        <div class="viz map" data-spec="charts/02_world_choropleth.json"></div>
+        <figcaption>
+          Enrolments by country of origin, 2025 (Equal Earth projection, log colour scale).
+          <a href="charts/02_world_choropleth.json">View spec</a>
+        </figcaption>
+      </figure>
+
+      <div class="grid-2">
+        <figure class="chart">
+          <div class="viz" data-spec="charts/03_lollipop_top_countries.json"></div>
+          <figcaption>
+            Top 20 source countries, 2025. <a href="charts/03_lollipop_top_countries.json">View spec</a>
+          </figcaption>
+        </figure>
+        <div class="aside">
+          <h3>A two-horse race, then a long tail</h3>
+          <p>
+            China (227k) and India (182k) are in a league of their own, but the more surprising
+            finding is third place: Nepal sends nearly 90,000 students &mdash; more than Vietnam,
+            Colombia and Indonesia combined. The chart uses a lollipop rather than a bar to keep
+            the ink minimal while preserving the precise position that lets you read each value.
+          </p>
+        </div>
+      </div>
+
+      <p class="lede">
+        Origins are also shifting. The stream below shows the top ten sources over time: China's
+        band is shrinking in relative terms even as the total grows, while India, the Philippines
+        and a widening "Other" tail expand. Australian international education is becoming markedly
+        more diversified.
+      </p>
+      <figure class="chart wide">
+        <div class="viz" data-spec="charts/04_stream_countries.json"></div>
+        <figcaption>
+          Top 10 source countries plus an "Other" residual, 2019&ndash;2025 (stream graph).
+          <a href="charts/04_stream_countries.json">View spec</a>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ============================ SECTION 3: DESTINATIONS ============================ -->
+    <section class="story">
+      <p class="section-num">03</p>
+      <h2>Where do they study in Australia?</h2>
+      <p class="lede">
+        Raw counts would simply rank the states by population. The map below instead shows
+        students <strong>per 100,000 residents</strong> &mdash; combining Department of Education
+        enrolments with ABS population. Once you control for population, a real gap appears: the
+        student "hubs" (NSW, Victoria and tiny Canberra) sit far above the periphery, where
+        Tasmania trails the nation.
+      </p>
+      <figure class="chart wide">
+        <div class="viz map" data-spec="charts/05_australia_choropleth.json"></div>
+        <figcaption>
+          International students per 100,000 residents by state, 2025.
+          Sources: Department of Education; ABS resident population, Sep 2025.
+          <a href="charts/05_australia_choropleth.json">View spec</a>
+        </figcaption>
+      </figure>
+
+      <div class="grid-2">
+        <figure class="chart">
+          <div class="viz" data-spec="charts/06_sector_donut.json"></div>
+          <figcaption>
+            Enrolments by education sector, 2025. <a href="charts/06_sector_donut.json">View spec</a>
+          </figcaption>
+        </figure>
+        <div class="aside">
+          <h3>Not all "students" are at university</h3>
+          <p>
+            Higher Education is the largest sector, but vocational education (VET) is a serious
+            second at roughly a third of all enrolments &mdash; far bigger than most Australians
+            assume. The remaining slices are English-language courses (ELICOS), schools and
+            non-award study.
+          </p>
+        </div>
+      </div>
+
+      <p class="lede">
+        The sector mix is not the same everywhere. New South Wales and Victoria look like
+        "university" states; Tasmania, Western Australia and South Australia lean noticeably more
+        towards vocational training. There is no single international-student profile by state.
+      </p>
+      <figure class="chart wide">
+        <div class="viz" data-spec="charts/07_state_sector_stacked.json"></div>
+        <figcaption>
+          Sector share within each state, 2025 (100% stacked bar).
+          <a href="charts/07_state_sector_stacked.json">View spec</a>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ============================ SECTION 4: THE PATTERN ============================ -->
+    <section class="story">
+      <p class="section-num">04</p>
+      <h2>The pattern beneath the numbers</h2>
+      <p class="lede">
+        This is the heart of the story. Cross-tabulating origin against sector reveals that
+        "international student" describes at least four distinct migration patterns: Chinese
+        students concentrate in Higher Education; Filipino students overwhelmingly in vocational
+        training; Colombian and Brazilian students follow a language-then-skills pathway; while
+        Indian and Nepalese students split between degrees and VET.
+      </p>
+      <figure class="chart wide">
+        <div class="viz" data-spec="charts/08_country_sector_heatmap.json"></div>
+        <figcaption>
+          Top 15 source countries &times; education sector, 2025 (heatmap).
+          <a href="charts/08_country_sector_heatmap.json">View spec</a>
+        </figcaption>
+      </figure>
+
+      <p class="lede">
+        Going one level deeper &mdash; into the <em>subject</em> studied rather than the level &mdash;
+        shows specific pipelines between country and field. Management &amp; Commerce dominates
+        overall, but Information Technology is heavily India-driven and Health draws strongly on
+        Filipino and Nepalese students. Several of these pipelines mirror Australian labour shortages.
+      </p>
+      <figure class="chart wide">
+        <div class="viz" data-spec="charts/09_country_field_heatmap.json"></div>
+        <figcaption>
+          Top 15 source countries &times; broad field of education, 2025 (log colour scale).
+          <a href="charts/09_country_field_heatmap.json">View spec</a>
+        </figcaption>
+      </figure>
+
+      <figure class="chart wide">
+        <div class="viz" data-spec="charts/10_aqf_levels.json"></div>
+        <figcaption>
+          Enrolments by qualification level, 2025. <a href="charts/10_aqf_levels.json">View spec</a>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ============================ SECTION 5: WHAT CHANGED ============================ -->
+    <section class="story">
+      <p class="section-num">05</p>
+      <h2>What changed after the pandemic?</h2>
+      <p class="lede">
+        Comparing 2019 with 2025 directly shows who recovered and who did not. Most top-ten
+        sources grew &mdash; Bangladesh more than quadrupled &mdash; but China remains below its
+        pre-COVID peak and Brazil is the only major source in sustained decline.
+      </p>
+      <figure class="chart wide">
+        <div class="viz" data-spec="charts/11_slope_2019_2025.json"></div>
+        <figcaption>
+          Top 10 source countries, 2019 vs 2025 (slope chart; labels show the growth multiplier).
+          <a href="charts/11_slope_2019_2025.json">View spec</a>
+        </figcaption>
+      </figure>
+
+      <p class="lede">
+        Finally, indexing each state to its own 2019 level (2019 = 100) lets us compare the
+        <em>shape</em> of recovery without large states drowning out small ones. Most states
+        overshot their pre-COVID baseline by 2024; New South Wales recovered the most modestly,
+        while Western Australia shows the most dramatic rebound.
+      </p>
+      <figure class="chart wide">
+        <div class="viz" data-spec="charts/12_small_multiples_states.json"></div>
+        <figcaption>
+          State recovery indexed to 2019 (dashed line = 2019 baseline; small multiples).
+          <a href="charts/12_small_multiples_states.json">View spec</a>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="footer">
+      <h2 class="footer-title">About this visualisation</h2>
+      <div class="footer-grid">
+        <div>
+          <h3>Why &amp; who</h3>
+          <p>
+            International education shapes the cities most Australians live in and is constantly in
+            the political conversation, yet the underlying patterns are rarely shown. This page is
+            built for a general Australian audience, avoiding jargon and statistical assumptions.
+          </p>
+        </div>
+        <div>
+          <h3>Data sources</h3>
+          <p>
+            Department of Education, <em>International Student Data</em> (January 2026 release),
+            <a href="https://www.education.gov.au/international-education-data-and-research" target="_blank" rel="noopener">education.gov.au</a>.
+            Australian Bureau of Statistics, <em>National, state and territory population</em>
+            (Sep 2025 quarter),
+            <a href="https://www.abs.gov.au/statistics/people/population" target="_blank" rel="noopener">abs.gov.au</a>.
+            World boundaries: vega-datasets <code>world-110m</code>.
+          </p>
+        </div>
+        <div>
+          <h3>How</h3>
+          <p>
+            All charts and maps are built with Vega-Lite; each specification is in the
+            <code>charts/</code> folder of this repository and is linked beneath every figure. The
+            per-capita map and the two heatmaps use measures derived by combining the two sources.
+          </p>
+        </div>
+      </div>
+      <p class="meta">
+        <strong>Author:</strong> [Your Name], Monash University &nbsp;&middot;&nbsp;
+        <strong>Created:</strong> May 2026 &nbsp;&middot;&nbsp;
+        <strong>AI acknowledgement:</strong> Generative AI was used for planning, drafting narrative
+        text and code assistance. All data aggregation and design decisions are the author's own.
+      </p>
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

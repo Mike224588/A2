@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "International student enrolments by qualification (AQF) level, 2025.",
+  "width": "container",
+  "height": 360,
+  "data": { "url": "data/11_level_of_study_2025.csv" },
+  "encoding": {
+    "y": {
+      "field": "level",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "Doctoral",
+        "Masters",
+        "Grad Diploma/Cert",
+        "Bachelor",
+        "Associate/Adv Diploma",
+        "Diploma",
+        "Certificate III/IV",
+        "Certificate I/II",
+        "Non-AQF / ELICOS",
+        "Schools"
+      ],
+      "axis": { "labelFontSize": 12 }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "bar", "color": "#2f8e85", "cornerRadiusEnd": 2 },
+      "encoding": {
+        "x": {
+          "field": "enrolments",
+          "type": "quantitative",
+          "title": "Enrolments in 2025",
+          "axis": { "format": "~s", "grid": false }
+        },
+        "tooltip": [
+          { "field": "level", "type": "nominal", "title": "Level" },
+          { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "align": "left", "dx": 6, "fontSize": 10.5, "fill": "#555" },
+      "encoding": {
+        "x": { "field": "enrolments", "type": "quantitative" },
+        "text": { "field": "enrolments", "type": "quantitative", "format": "," }
+      }
+    }
+  ]
+}

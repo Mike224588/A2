@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Micro stacked bar: China and India versus all other source countries, 2025.",
+  "width": "container",
+  "height": 26,
+  "data": {
+    "values": [
+      { "group": "China", "enrolments": 227348, "ord": 1 },
+      { "group": "India", "enrolments": 182007, "ord": 2 },
+      { "group": "Rest of world", "enrolments": 647298, "ord": 3 }
+    ]
+  },
+  "mark": { "type": "bar", "height": 22 },
+  "encoding": {
+    "x": { "field": "enrolments", "type": "quantitative", "stack": "normalize", "axis": null },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "scale": { "domain": ["China", "India", "Rest of world"], "range": ["#0c4a44", "#2f8e85", "#dde6e8"] },
+      "legend": null
+    },
+    "order": { "field": "ord", "type": "quantitative" },
+    "tooltip": [
+      { "field": "group", "type": "nominal", "title": "Origin" },
+      { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+    ]
+  },
+  "view": { "stroke": null }
+}

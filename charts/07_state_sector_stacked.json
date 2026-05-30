@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Share of each state's international enrolments by education sector, 2025 (100% stacked bar).",
+  "width": "container",
+  "height": 320,
+  "data": { "url": "data/13_state_sector_2025.csv" },
+  "mark": { "type": "bar" },
+  "transform": [
+    { "calculate": "indexof(['Higher Education','VET','ELICOS','Non-award','Schools'], datum.sector)", "as": "sectorRank" }
+  ],
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "New South Wales",
+        "Victoria",
+        "Queensland",
+        "Western Australia",
+        "South Australia",
+        "Australian Capital Territory",
+        "Tasmania",
+        "Northern Territory"
+      ],
+      "axis": { "labelFontSize": 12 }
+    },
+    "x": {
+      "field": "enrolments",
+      "type": "quantitative",
+      "stack": "normalize",
+      "title": "Share of state's enrolments",
+      "axis": { "format": "%", "grid": false }
+    },
+    "color": {
+      "field": "sector",
+      "type": "nominal",
+      "title": "Sector",
+      "sort": ["Higher Education", "VET", "ELICOS", "Non-award", "Schools"],
+      "scale": {
+        "domain": ["Higher Education", "VET", "ELICOS", "Schools", "Non-award"],
+        "range": ["#1b6f6a", "#e08a3c", "#4f86c6", "#b0466b", "#9aa0a6"]
+      },
+      "legend": { "orient": "top", "title": null }
+    },
+    "order": {
+      "field": "sectorRank",
+      "type": "quantitative",
+      "sort": "ascending"
+    },
+    "tooltip": [
+      { "field": "state", "type": "nominal", "title": "State" },
+      { "field": "sector", "type": "nominal", "title": "Sector" },
+      { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+    ]
+  }
+}

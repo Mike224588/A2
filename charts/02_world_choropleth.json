@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "World choropleth of where Australia's international students come from, 2025. Colour is log-scaled enrolment count. Uses an Equal Earth projection.",
+  "width": "container",
+  "height": 420,
+  "projection": { "type": "equalEarth" },
+  "layer": [
+    {
+      "description": "Ocean background sphere.",
+      "data": { "sphere": true },
+      "mark": { "type": "geoshape", "fill": "#eef3f5", "stroke": "#dde6e8" }
+    },
+    {
+      "description": "Country polygons, shaded grey when no enrolment data exists.",
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": { "type": "topojson", "feature": "countries" }
+      },
+      "transform": [
+        {
+          "lookup": "id",
+          "from": {
+            "data": {
+              "url": "data/04_nationalities_2025_all.csv",
+              "format": { "type": "csv", "parse": { "id": "number", "enrolments": "number" } }
+            },
+            "key": "id",
+            "fields": ["nationality", "enrolments"]
+          }
+        }
+      ],
+      "mark": { "type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.3 },
+      "encoding": {
+        "color": {
+          "field": "enrolments",
+          "type": "quantitative",
+          "scale": { "type": "log", "scheme": "tealblues", "domainMin": 1 },
+          "title": "Enrolments (log scale)",
+          "legend": { "orient": "bottom-left", "gradientLength": 150, "format": "~s" },
+          "condition": { "test": "datum.enrolments === null", "value": "#e7e7e2" }
+        },
+        "tooltip": [
+          { "field": "nationality", "type": "nominal", "title": "Country" },
+          { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," }
+        ]
+      }
+    }
+  ]
+}
