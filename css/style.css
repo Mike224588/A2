@@ -1,12 +1,14 @@
 :root {
-  --ink: #16302d;
-  --muted: #5b6663;
-  --faint: #8a948f;
+  --navy: #0a2540;
+  --navy-mid: #0d3a63;
+  --gold: #c9922e;
+  --gold-light: #e0a13c;
+  --ink: #0a2540;
+  --muted: #4a5f73;
+  --faint: #7a8fa3;
   --bg: #faf8f3;
   --card: #ffffff;
   --border: #e7e2d8;
-  --accent: #0c4a44;
-  --accent-soft: #9ad1cb;
   --rule: #d8d2c6;
   --max: 1080px;
 }
@@ -29,7 +31,7 @@ body {
 .page {
   width: min(var(--max), calc(100% - 48px));
   margin: 0 auto;
-  padding: 28px 0 64px;
+  padding: 20px 0 64px;
 }
 
 /* ---------------- Typography ---------------- */
@@ -40,7 +42,7 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
 }
 
-a { color: var(--accent); text-decoration: none; }
+a { color: var(--navy-mid); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 p { max-width: 70ch; }
@@ -49,7 +51,7 @@ p { max-width: 70ch; }
 .hero {
   position: relative;
   width: 100%;
-  padding: 72px 24px 64px;
+  padding: 48px 24px 44px;
   text-align: center;
   color: #f4f8fc;
   background:
@@ -83,36 +85,37 @@ p { max-width: 70ch; }
   gap: 12px;
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: #bcd4ec;
-  margin: 0 0 22px;
+  margin: 0 0 15px;
 }
 
 .eyebrow-mark {
   display: inline-block;
-  width: 34px;
+  width: 37px;
   height: 2px;
-  background: #e0a13c;
+  background: var(--gold-light);
 }
 
 .hero h1 {
   font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(44px, 8vw, 92px);
+  font-size: clamp(35px, 5vw, 66px);
   font-weight: 600;
-  line-height: 1.02;
-  letter-spacing: -0.015em;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   color: #ffffff;
-  margin: 0 auto 18px;
-  max-width: 16ch;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+  margin: 0 auto 13px;
+  max-width: none;
+  white-space: nowrap;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.2);
 }
 
 .hero-tagline {
   font-family: "Fraunces", Georgia, serif;
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(19px, 2.6vw, 27px);
+  font-size: clamp(19px, 2.2vw, 24px);
   color: #cfe0f1;
   margin: 0 auto;
   max-width: 40ch;
@@ -120,51 +123,33 @@ p { max-width: 70ch; }
 
 /* Intro paragraph that sits below the banner */
 .hero-lede {
-  font-size: clamp(18px, 2.1vw, 21px);
+  font-size: clamp(17px, 2vw, 20px);
   line-height: 1.55;
   color: var(--muted);
   max-width: 64ch;
-  margin: 38px 0 8px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--rule);
+  margin: 28px 0 0;
 }
 
 .hero-lede strong { color: var(--ink); font-weight: 600; }
 
-/* ---------------- KPI cards ---------------- */
-.kpis {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin: 40px 0 24px;
+/* Scene-setter: line chart between intro and section 01 */
+.scene-setter {
+  margin: 32px 0 0;
+  padding-top: 0;
 }
 
-.kpi {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 20px 20px 14px;
-  display: flex;
-  flex-direction: column;
-}
-
-.kpi-number {
-  font-family: "Fraunces", serif;
-  font-size: 34px;
-  font-weight: 600;
-  color: var(--accent);
-  margin: 0;
-  line-height: 1;
-}
-
-.kpi-label {
-  font-size: 13.5px;
+.scene-lede {
+  font-size: 16.5px;
+  line-height: 1.55;
   color: var(--muted);
-  margin: 10px 0 12px;
-  flex: 1;
+  max-width: 64ch;
+  margin: 0 0 18px;
 }
 
-.spark { width: 100%; min-height: 30px; margin-top: auto; }
+.scene-lede em {
+  color: var(--navy);
+  font-style: italic;
+}
 
 /* ---------------- Story sections ---------------- */
 .story {
@@ -173,29 +158,34 @@ p { max-width: 70ch; }
   border-top: 1px solid var(--rule);
 }
 
+.hero-lede + .scene-setter + .story {
+  margin-top: 56px;
+}
+
 .section-num {
-  font-family: "Fraunces", serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--accent-soft);
-  letter-spacing: 0.1em;
-  margin: 0 0 6px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  margin: 0 0 8px;
 }
 
 h2 {
-  font-size: clamp(26px, 3.4vw, 38px);
+  font-size: clamp(24px, 3vw, 34px);
   font-weight: 600;
+  color: var(--navy);
   margin: 0 0 16px;
-  max-width: 22ch;
+  max-width: 28ch;
 }
 
 .lede {
   font-size: 17.5px;
-  color: #34403d;
+  color: var(--muted);
   margin: 0 0 14px;
 }
 
-.lede em { color: var(--accent); font-style: italic; }
+.lede em { color: var(--navy); font-style: italic; }
 
 /* ---------------- Charts ---------------- */
 .chart {
@@ -241,6 +231,7 @@ figcaption a {
 .aside h3 {
   font-size: 21px;
   font-weight: 600;
+  color: var(--navy);
   margin: 0 0 10px;
 }
 
@@ -290,7 +281,6 @@ code {
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 900px) {
-  .kpis { grid-template-columns: repeat(2, 1fr); }
   .grid-2 { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 20px; }
 }
@@ -298,6 +288,6 @@ code {
 @media (max-width: 560px) {
   body { font-size: 16px; }
   .page { width: calc(100% - 32px); }
-  .kpis { grid-template-columns: 1fr; }
   .chart { padding: 16px 16px 12px; }
+  .hero h1 { white-space: normal; }
 }

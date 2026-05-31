@@ -6,15 +6,6 @@
   "data": { "url": "data/01_annual_totals.csv" },
   "layer": [
     {
-      "description": "Shaded band marking the closed-border COVID period.",
-      "data": { "values": [{ "start": 2019.6, "end": 2021.4 }] },
-      "mark": { "type": "rect", "fill": "#b8c4c2", "opacity": 0.18 },
-      "encoding": {
-        "x": { "field": "start", "type": "quantitative", "scale": { "zero": false, "nice": false } },
-        "x2": { "field": "end" }
-      }
-    },
-    {
       "description": "Enrolments and commencements as two lines.",
       "transform": [
         { "fold": ["enrolments", "commencements"], "as": ["series", "value"] },
@@ -35,7 +26,8 @@
               "field": "value",
               "type": "quantitative",
               "title": "Students",
-              "axis": { "format": "~s" }
+              "scale": { "domain": [0, 1200000], "zero": false, "nice": false },
+              "axis": { "format": "~s", "values": [0, 200000, 400000, 600000, 800000, 1000000, 1200000] }
             },
             "color": {
               "field": "Series",
@@ -50,7 +42,11 @@
           "mark": { "type": "point", "filled": true, "size": 55 },
           "encoding": {
             "x": { "field": "year", "type": "quantitative" },
-            "y": { "field": "value", "type": "quantitative" },
+            "y": {
+              "field": "value",
+              "type": "quantitative",
+              "scale": { "domain": [0, 1200000], "zero": false, "nice": false }
+            },
             "color": {
               "field": "Series",
               "type": "nominal",
@@ -67,28 +63,30 @@
       ]
     },
     {
-      "description": "Annotations placed above their data points.",
+      "description": "Policy annotations with room above the lines (y-axis capped at 1.2M).",
       "data": {
         "values": [
-          { "year": 2020, "value": 879874, "label": "Borders closed, Mar 2020" },
-          { "year": 2024, "value": 1088491, "label": "Record high" },
-          { "year": 2025, "value": 1056653, "label": "First post-COVID dip;caps proposed" }
+          { "year": 2020, "labelY": 980000, "label": "Borders closed" },
+          { "year": 2021, "labelY": 640000, "label": "Pandemic low" },
+          { "year": 2024, "labelY": 1170000, "label": "Record high" },
+          { "year": 2025, "labelY": 1140000, "label": "First post-COVID dip" }
         ]
       },
-      "mark": { "type": "text", "align": "center", "dy": -16, "fontSize": 11, "fontStyle": "italic", "fill": "#444", "lineBreak": ";" },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "fill": "#444"
+      },
       "encoding": {
         "x": { "field": "year", "type": "quantitative" },
-        "y": { "field": "value", "type": "quantitative" },
-        "text": { "field": "label" }
-      }
-    },
-    {
-      "description": "Annotation placed below the pandemic low.",
-      "data": { "values": [{ "year": 2021, "value": 715792, "label": "Pandemic low" }] },
-      "mark": { "type": "text", "align": "center", "dy": 24, "fontSize": 11, "fontStyle": "italic", "fill": "#444" },
-      "encoding": {
-        "x": { "field": "year", "type": "quantitative" },
-        "y": { "field": "value", "type": "quantitative" },
+        "y": {
+          "field": "labelY",
+          "type": "quantitative",
+          "scale": { "domain": [0, 1200000], "zero": false, "nice": false }
+        },
         "text": { "field": "label" }
       }
     }
