@@ -68,8 +68,8 @@
         "values": [
           { "year": 2020, "labelY": 980000, "label": "Borders closed" },
           { "year": 2021, "labelY": 640000, "label": "Pandemic low" },
-          { "year": 2024, "labelY": 1170000, "label": "Record high" },
-          { "year": 2025, "labelY": 1140000, "label": "First post-COVID dip" }
+          { "year": 2024, "labelY": 1175000, "label": "Record high" },
+          { "year": 2025, "labelY": 870000, "label": "First post-COVID dip" }
         ]
       },
       "mark": {

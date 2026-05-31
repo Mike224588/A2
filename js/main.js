@@ -49,6 +49,18 @@ const EMBED_OPTIONS = {
   tooltip: { theme: "light" }
 };
 
+function warnIfFileProtocol() {
+  if (location.protocol !== "file:") return;
+  const banner = document.createElement("p");
+  banner.setAttribute("role", "alert");
+  banner.className = "file-protocol-warning";
+  banner.innerHTML =
+    "<strong>Charts will not load from a saved file.</strong> " +
+    "From the project folder run <code>python -m http.server 8123</code>, " +
+    "then open <code>http://localhost:8123/</code> in your browser.";
+  document.body.prepend(banner);
+}
+
 function renderAll() {
   const nodes = document.querySelectorAll(".viz[data-spec]");
   nodes.forEach((el) => {
@@ -56,17 +68,22 @@ function renderAll() {
     vegaEmbed(el, spec, EMBED_OPTIONS).catch((err) => {
       console.error("Failed to render", spec, err);
       el.innerHTML =
-        '<p style="color:#b0466b;font-size:13px;padding:12px;">' +
-        "This chart could not be loaded. Open the page through a local web server " +
-        "(not as a file://) so the data files can be fetched. (" +
-        spec +
-        ")</p>";
+        '<p class="chart-error">' +
+        "This chart could not be loaded. Use a local web server " +
+        "(<code>python -m http.server 8123</code>) and open " +
+        "<code>http://localhost:8123/</code> — not a file:// link. " +
+        "(" + spec + ")</p>";
     });
   });
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", renderAll);
-} else {
+function init() {
+  warnIfFileProtocol();
   renderAll();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
 }
