@@ -1,14 +1,22 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Top 20 source countries of international students in Australia, 2025, shown as a lollipop chart.",
+  "description": "Top 10 source countries of international students in Australia, 2025, shown as a lollipop chart.",
   "width": "container",
-  "height": 480,
+  "height": 300,
   "data": { "url": "data/04b_top20_nationalities_2025.csv" },
+  "transform": [
+    {
+      "window": [
+        { "op": "rank", "sort": [{ "field": "enrolments", "order": "descending" }], "as": "rank" }
+      ]
+    },
+    { "filter": "datum.rank <= 10" }
+  ],
   "encoding": {
     "y": {
       "field": "nationality",
       "type": "nominal",
-      "sort": "-x",
+      "sort": { "field": "rank", "order": "ascending" },
       "title": null,
       "axis": { "labelFontSize": 12 }
     }
@@ -21,7 +29,8 @@
           "field": "enrolments",
           "type": "quantitative",
           "title": "Enrolments in 2025",
-          "axis": { "format": "~s", "grid": false }
+          "scale": { "domain": [0, 270000] },
+          "axis": { "format": "~s", "grid": false, "values": [0, 50000, 100000, 150000, 200000, 250000] }
         },
         "x2": { "datum": 0 }
       }

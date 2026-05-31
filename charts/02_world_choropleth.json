@@ -3,6 +3,7 @@
   "description": "World choropleth of where Australia's international students come from, 2025. Colour is log-scaled enrolment count. Uses an Equal Earth projection.",
   "width": "container",
   "height": 420,
+  "padding": { "bottom": 56 },
   "projection": { "type": "equalEarth" },
   "layer": [
     {
@@ -35,8 +36,14 @@
           "field": "enrolments",
           "type": "quantitative",
           "scale": { "type": "log", "scheme": "tealblues", "domainMin": 1 },
-          "title": "Enrolments (log scale)",
-          "legend": { "orient": "bottom-left", "gradientLength": 150, "format": "~s" },
+          "title": "Enrolments",
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 200,
+            "offset": 12,
+            "format": "~s"
+          },
           "condition": { "test": "datum.enrolments === null", "value": "#e7e7e2" }
         },
         "tooltip": [

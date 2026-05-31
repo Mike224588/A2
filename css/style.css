@@ -262,9 +262,9 @@ figcaption a {
 /* Two-column layouts: chart beside explanatory aside */
 .grid-2 {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
+  grid-template-columns: 1.55fr 1fr;
   gap: 26px;
-  align-items: center;
+  align-items: start;
   margin: 22px 0;
 }
 
