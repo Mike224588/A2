@@ -9,11 +9,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=6" />
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+
+  <!-- d3 + d3-sankey: the country-to-field flow diagram is the one chart
+       Vega-Lite cannot express natively (it has no Sankey layout). -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3"></script>
 </head>
 <body>
 
@@ -73,18 +78,20 @@
       <p class="section-num">02</p>
       <h2>Six countries, half the students</h2>
       <p class="lede">
-        The map of origins is dominated by an "Asian crescent" running from China through the
-        subcontinent and Southeast Asia, with a smaller cluster in South America. Africa,
-        Europe and North America barely register. Colour is on a logarithmic scale because the
-        gap between the leaders and the long tail is enormous.
+        So where do these students actually come from? The map below shows the world recoloured
+        by enrolment count.
       </p>
       <figure class="chart wide">
         <div class="viz map" data-spec="charts/02_world_choropleth.json"></div>
-        <figcaption>
-          Enrolments by country of origin, 2025 (Equal Earth projection, log colour scale).
-          <a href="charts/02_world_choropleth.json">View spec</a>
-        </figcaption>
       </figure>
+
+      <p class="lede">
+        Australia's international students come overwhelmingly from one part of the world. A clear
+        arc runs from China through India, the subcontinent, and Southeast Asia, joined by a
+        smaller cluster from Colombia and Brazil. Most of Africa, Europe, and North America barely
+        register. The recruiting ground for Australian international education is far narrower than
+        a world map would suggest.
+      </p>
 
       <div class="grid-2">
         <figure class="chart">
@@ -93,22 +100,25 @@
             Top 10 source countries, 2025. <a href="charts/03_lollipop_top_countries.json">View spec</a>
           </figcaption>
         </figure>
-        <div class="aside">
+        <aside class="story-card">
           <h3>A two-horse race, then a long tail</h3>
           <p>
-            China (227k) and India (182k) are in a league of their own, but the more surprising
-            finding is third place: Nepal sends nearly 90,000 students &mdash; more than Vietnam,
-            Colombia and Indonesia combined. The chart uses a lollipop rather than a bar to keep
-            the ink minimal while preserving the precise position that lets you read each value.
+            Two countries are in a league of their own: China sent
+            <strong class="emphasis">227,000</strong> students in 2025, India sent
+            <strong class="emphasis">182,000</strong>. The more striking finding is third place.
+            Nepal sent nearly <strong class="emphasis">90,000</strong> students, more than Vietnam,
+            Colombia, and Indonesia combined. Below the top three the numbers drop off sharply, with
+            most countries on the list sending fewer than 30,000 students each. But these ranks
+            aren't fixed: the mix has been shifting for years.
           </p>
-        </div>
+        </aside>
       </div>
 
       <p class="lede">
-        Origins are also shifting. The stream below shows the top ten sources over time: China's
-        band is shrinking in relative terms even as the total grows, while India, the Philippines
-        and a widening "Other" tail expand. Australian international education is becoming markedly
-        more diversified.
+        The mix has been visibly shifting for years. China's share of the total is shrinking in
+        relative terms, even as overall numbers reach new records. India, the Philippines, and a
+        widening &ldquo;Other&rdquo; tail are expanding to fill the space. Australian international
+        education is becoming markedly more diverse than it was before the pandemic.
       </p>
       <figure class="chart wide">
         <div class="viz" data-spec="charts/04_stream_countries.json"></div>
@@ -124,11 +134,11 @@
       <p class="section-num">03</p>
       <h2>Two states host two-thirds</h2>
       <p class="lede">
-        Raw counts would simply rank the states by population. The map below instead shows
-        students <strong>per 100,000 residents</strong> &mdash; combining Department of Education
-        enrolments with ABS population. Once you control for population, a real gap appears: the
-        student "hubs" (NSW, Victoria and tiny Canberra) sit far above the periphery, where
-        Tasmania trails the nation.
+        The map shows international students <strong>per 100,000 residents</strong>. New South Wales
+        and Victoria sit at the top, drawing students at a rate well above every other state. The
+        bigger surprise is the Australian Capital Territory: with a population a fraction of either,
+        Canberra hosts students at nearly the same rate. Tasmania, by contrast, trails the country.
+        Knowing where students go is only half the picture. What they study tells a different story.
       </p>
       <figure class="chart wide">
         <div class="viz map" data-spec="charts/05_australia_choropleth.json"></div>
@@ -146,21 +156,26 @@
             Enrolments by education sector, 2025. <a href="charts/06_sector_donut.json">View spec</a>
           </figcaption>
         </figure>
-        <div class="aside">
+        <aside class="story-card">
           <h3>Not all "students" are at university</h3>
           <p>
-            Higher Education is the largest sector, but vocational education (VET) is a serious
-            second at roughly a third of all enrolments &mdash; far bigger than most Australians
-            assume. The remaining slices are English-language courses (ELICOS), schools and
-            non-award study.
+            Higher Education is the largest sector at <strong class="emphasis">52%</strong>, but
+            vocational education comes in at a serious <strong class="emphasis">34%</strong>. A third
+            of all international students in Australia are doing trades, hospitality, aged care, or
+            similar courses, not university degrees. The remaining 14% study English-language courses
+            (ELICOS), attend schools, or take non-award short courses. This national average hides a
+            lot of variation.
           </p>
-        </div>
+        </aside>
       </div>
 
+      <h3 class="block-head">The mix is not the same everywhere</h3>
       <p class="lede">
-        The sector mix is not the same everywhere. New South Wales and Victoria look like
-        "university" states; Tasmania, Western Australia and South Australia lean noticeably more
-        towards vocational training. There is no single international-student profile by state.
+        New South Wales and Victoria look like "university states": over half of their international
+        students are in Higher Education. Western Australia, Tasmania, and South Australia tell a
+        different story, with a much larger share of their students in vocational courses, in fields
+        like trades, hospitality, and aged care that respond to local industry needs. There is no
+        single international-student profile by state.
       </p>
       <figure class="chart wide">
         <div class="viz" data-spec="charts/07_state_sector_stacked.json"></div>
@@ -176,11 +191,13 @@
       <p class="section-num">04</p>
       <h2>Not one student body &mdash; four</h2>
       <p class="lede">
-        This is the heart of the story. Cross-tabulating origin against sector reveals that
-        "international student" describes at least four distinct migration patterns: Chinese
-        students concentrate in Higher Education; Filipino students overwhelmingly in vocational
-        training; Colombian and Brazilian students follow a language-then-skills pathway; while
-        Indian and Nepalese students split between degrees and VET.
+        "International students" doesn't describe one phenomenon. It describes at least four.
+        Cross-tabulating each country against the education sector its students enrol in reveals four
+        distinct patterns. Chinese students concentrate in Higher Education. Filipino students go
+        overwhelmingly into vocational training. Colombian and Brazilian students follow a
+        language-then-skills pathway, starting in ELICOS and moving into VET. Indian and Nepalese
+        students split between degrees and VET. Each row of the heatmap shows a different relationship
+        with Australian education.
       </p>
       <figure class="chart wide">
         <div class="viz" data-spec="charts/08_country_sector_heatmap.json"></div>
@@ -190,20 +207,54 @@
         </figcaption>
       </figure>
 
+      <h3 class="block-head">Specific pipelines</h3>
       <p class="lede">
-        Going one level deeper &mdash; into the <em>subject</em> studied rather than the level &mdash;
-        shows specific pipelines between country and field. Management &amp; Commerce dominates
-        overall, but Information Technology is heavily India-driven and Health draws strongly on
-        Filipino and Nepalese students. Several of these pipelines mirror Australian labour shortages.
+        Sector tells you the level of study. Field tells you the subject. Management &amp; Commerce is
+        the largest field for almost every country, but the deeper patterns are in the second and
+        third bars of each panel. Information Technology is heavily India-driven. Health draws strongly
+        on Filipino and Nepalese students. Engineering is concentrated in students from China, India,
+        and Vietnam. Several of these pipelines mirror Australia's stated labour shortages.
       </p>
+      <aside class="story-card story-card-wide">
+        <h3>How to read this</h3>
+        <p>
+          Read left to right: each <strong class="emphasis">country</strong> links to its three
+          largest <strong class="emphasis">fields of study</strong>. Band thickness is the number of
+          students; colour marks the field.
+        </p>
+      </aside>
       <figure class="chart wide">
-        <div class="viz" data-spec="charts/09_country_field_heatmap.json"></div>
+        <div
+          id="sankey-country-field"
+          class="sankey"
+          data-src="data/09_country_field_heatmap.csv"
+          role="img"
+          aria-label="Sankey diagram showing the three largest fields of study for each of the top ten source countries, 2025."
+        ></div>
         <figcaption>
-          Top 15 source countries &times; broad field of education, 2025 (log colour scale).
-          <a href="charts/09_country_field_heatmap.json">View spec</a>
+          Top 10 source countries to their three largest fields of study, 2025
+          (Sankey; each country's top three field flows).
+          <a href="data/09_country_field_heatmap.csv">View data</a>
         </figcaption>
       </figure>
 
+      <p class="sankey-tip">
+        <strong>Tip:</strong> click a country to trace just its flows; click it again (or any empty
+        space) to reset.
+      </p>
+
+      <h3 class="block-head">Three pathways, roughly equal</h3>
+      <p class="lede">
+        Group the qualifications by the pathway they belong to and a surprising pattern emerges.
+        Postgraduate study accounts for <strong class="emphasis">31%</strong> of all enrolments, led
+        by 268,000 Masters students. Vocational training is close behind at
+        <strong class="emphasis">28%</strong>, anchored by Diplomas and Certificate III/IV courses.
+        Undergraduate study sits at <strong class="emphasis">27%</strong>. The three groups are roughly
+        equal in size, which is not what most Australians picture when they think of international
+        students. The fourth tier &mdash; English-language courses and school-level study &mdash;
+        accounts for the remaining 14%, often as a stepping stone into one of the three larger
+        pathways.
+      </p>
       <figure class="chart wide">
         <div class="viz" data-spec="charts/10_aqf_levels.json"></div>
         <figcaption>
@@ -285,6 +336,6 @@
     </footer>
   </main>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=5"></script>
 </body>
 </html>

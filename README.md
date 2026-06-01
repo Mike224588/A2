@@ -69,12 +69,16 @@ visualisation_plan.md   The chart-by-chart design blueprint
 | 6 | `charts/06_sector_donut.json` | Donut chart |
 | 7 | `charts/07_state_sector_stacked.json` | 100% stacked bar |
 | 8 | `charts/08_country_sector_heatmap.json` | Heatmap |
-| 9 | `charts/09_country_field_heatmap.json` | Heatmap (log) |
+| 9 | `js/main.js` (`renderSankey`) | Sankey diagram (d3-sankey) |
 | 10 | `charts/10_aqf_levels.json` | Horizontal bar chart |
 | 11 | `charts/11_slope_2019_2025.json` | Slope chart |
 | 12 | `charts/12_small_multiples_states.json` | Small multiples |
 
-All diagrams and maps are built with **Vega-Lite** only, per the assignment's library restriction.
+All diagrams and maps are built with **Vega-Lite**, with one deliberate exception: the
+country-to-field flow diagram (#9) is a **Sankey**, an idiom Vega-Lite cannot express natively.
+It is rendered with **d3-sankey**, filtered to each country's three largest field flows so the
+pipeline story stays legible. Every other figure remains a human-readable Vega-Lite JSON spec in
+`charts/`. The original heatmap spec is retained at `charts/09_country_field_heatmap.json`.
 
 ## AI acknowledgement
 
