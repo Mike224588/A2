@@ -234,12 +234,56 @@ h2 {
   color: var(--muted);
   max-width: none;
   width: 100%;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   text-align: justify;
   hyphens: auto;
 }
 
 .lede em { color: var(--navy); font-style: italic; }
+
+/* Extra gap between narrative blocks (lede, chart, card, subhead) in a section */
+.story > figure.chart + .lede,
+.story > figure.chart + .grid-story,
+.story > .lede + .grid-story,
+.story > .grid-2 + .lede,
+.story > .grid-story + .lede,
+.story > .lede + figure.chart,
+.story > .grid-2 + figure.chart,
+.story > .grid-2 + .block-head {
+  margin-top: 40px;
+}
+
+.story > .block-head + .lede,
+.story > .lede + .block-head,
+.story > figure.chart + .block-head {
+  margin-top: 28px;
+}
+
+/* World map → following lede (section 02) */
+.story > figure.chart:has(.viz.map) {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.story > figure.chart:has(.viz.map) + .lede {
+  margin-top: 28px;
+}
+
+/* Caption or lede → next chart + story-card row (sections 02 & 03) */
+.story > figure.chart:has(figcaption) + .grid-2,
+.story > .lede + .grid-2 {
+  margin-top: 56px;
+}
+
+.story > figure.chart:has(figcaption) {
+  margin-bottom: 0;
+}
+
+.story figure.chart figcaption {
+  margin-top: 10px;
+  margin-bottom: 28px;
+  padding-bottom: 6px;
+}
 
 /* Standalone headline above a chart (no card) */
 .block-head {
@@ -248,7 +292,7 @@ h2 {
   font-weight: 600;
   color: var(--navy);
   line-height: 1.25;
-  margin: 26px 0 10px;
+  margin: 28px 0 12px;
 }
 
 /* ---------------- Charts ---------------- */
@@ -263,12 +307,32 @@ h2 {
 
 .chart.wide { margin-top: 24px; }
 
+.chart.wide .viz,
+.chart.wide .vega-embed {
+  width: 100%;
+  max-width: 100%;
+}
+
 .viz { width: 100%; }
 
-.viz.map { min-height: 420px; }
+.viz.map { min-height: 0; }
+
+/* World map: clip embed wrapper to chart bounds (no gap under legend) */
+.story > figure.chart:has(.viz.map) .viz.map,
+.story > figure.chart:has(.viz.map) .vega-embed {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.story > figure.chart:has(.viz.map) .vega-embed canvas,
+.story > figure.chart:has(.viz.map) .vega-embed svg {
+  display: block;
+  vertical-align: bottom;
+}
 
 figcaption {
-  margin-top: 12px;
+  margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid var(--border);
   font-size: 13px;
@@ -287,7 +351,7 @@ figcaption a {
   grid-template-columns: 1.55fr 1fr;
   gap: 26px;
   align-items: start;
-  margin: 22px 0;
+  margin: 0 0 28px;
 }
 
 .grid-2 .chart { margin: 0; }
@@ -303,29 +367,16 @@ figcaption a {
 
 /* ---------------- Footer ---------------- */
 .footer {
-  margin-top: 84px;
-  padding-top: 32px;
+  margin-top: 48px;
+  padding-top: 28px;
   border-top: 2px solid var(--ink);
 }
-
-.footer-title { font-size: 26px; margin: 0 0 22px; }
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-bottom: 28px;
-}
-
-.footer-grid h3 { font-size: 16px; margin: 0 0 8px; }
-.footer-grid p { font-size: 14.5px; color: var(--muted); margin: 0; }
 
 .meta {
   font-size: 13.5px;
   color: var(--faint);
   max-width: none;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
+  margin: 0;
   line-height: 1.7;
 }
 
@@ -383,6 +434,51 @@ code {
 }
 .sankey-tip strong { color: var(--navy); }
 
+/* d3 treemap: qualification pathways */
+.treemap { width: 100%; }
+.treemap-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.treemap-subhead {
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--faint);
+  margin: 0 0 8px;
+  max-width: none;
+}
+
+.treemap-leaf {
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.treemap-headbar { stroke: #ffffff; stroke-width: 2; }
+.treemap-headtext {
+  fill: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.treemap-qual {
+  fill: #ffffff;
+  font-size: 12.5px;
+  font-weight: 500;
+  opacity: 0.92;
+}
+.treemap-value {
+  fill: #ffffff;
+  font-size: 19px;
+  font-weight: 700;
+}
+.treemap-value-sm {
+  font-size: 14px;
+}
+
 .file-protocol-warning,
 .chart-error {
   margin: 0;
@@ -404,7 +500,6 @@ code {
   .grid-2 { grid-template-columns: 1fr; }
   .grid-story { grid-template-columns: 1fr; }
   .section-sub { display: block; white-space: normal; margin-top: 4px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 
 @media (max-width: 560px) {

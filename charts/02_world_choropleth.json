@@ -2,9 +2,13 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "World choropleth of where Australia's international students come from, 2025. Colour is log-scaled enrolment count. Uses an Equal Earth projection.",
   "width": "container",
-  "height": 420,
-  "padding": { "bottom": 56 },
+  "height": 493,
+  "autosize": { "type": "none" },
+  "padding": { "top": 0, "bottom": 56, "left": 0, "right": 0 },
   "projection": { "type": "equalEarth" },
+  "config": {
+    "view": { "stroke": null, "continuousPadding": 0, "discretePadding": 0 }
+  },
   "layer": [
     {
       "description": "Ocean background sphere.",

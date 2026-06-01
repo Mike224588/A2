@@ -70,15 +70,20 @@ visualisation_plan.md   The chart-by-chart design blueprint
 | 7 | `charts/07_state_sector_stacked.json` | 100% stacked bar |
 | 8 | `charts/08_country_sector_heatmap.json` | Heatmap |
 | 9 | `js/main.js` (`renderSankey`) | Sankey diagram (d3-sankey) |
-| 10 | `charts/10_aqf_levels.json` | Horizontal bar chart |
-| 11 | `charts/11_slope_2019_2025.json` | Slope chart |
+| 10 | `js/main.js` (`renderTreemap`) | Treemap (d3, pathway tiers) |
+| 11 | `charts/11_dumbbell_2019_2025.json` | Dumbbell chart (2019 vs 2025) |
 | 12 | `charts/12_small_multiples_states.json` | Small multiples |
 
-All diagrams and maps are built with **Vega-Lite**, with one deliberate exception: the
-country-to-field flow diagram (#9) is a **Sankey**, an idiom Vega-Lite cannot express natively.
-It is rendered with **d3-sankey**, filtered to each country's three largest field flows so the
-pipeline story stays legible. Every other figure remains a human-readable Vega-Lite JSON spec in
-`charts/`. The original heatmap spec is retained at `charts/09_country_field_heatmap.json`.
+Most diagrams and maps are built with **Vega-Lite**, with two deliberate exceptions for idioms
+Vega-Lite cannot express natively:
+
+- **#9 Sankey** (country to field of study), rendered with **d3-sankey**, filtered to each country's
+  three largest field flows so the pipeline story stays legible.
+- **#10 Treemap** (qualifications grouped into four pathway tiers), rendered with **d3.treemap**.
+
+Both read human-readable CSVs from `data/`. The earlier Vega-Lite versions are retained at
+`charts/09_country_field_heatmap.json` and `charts/10_aqf_levels.json`. Every other figure is a
+human-readable Vega-Lite JSON spec in `charts/`.
 
 ## AI acknowledgement
 

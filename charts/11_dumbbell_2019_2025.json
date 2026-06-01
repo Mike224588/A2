@@ -1,0 +1,118 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Horizontal dumbbell chart: top 10 source countries, 2019 vs 2025 on a linear enrolment scale. Black dots = 2019 (initial); 2025 dots and connecting lines are green for growth or orange for decline.",
+  "width": "container",
+  "height": 540,
+  "padding": { "left": 8, "right": 92 },
+  "data": { "url": "data/12_slope_calc.csv" },
+  "transform": [
+    { "pivot": "year", "value": "enrolments", "groupby": ["nationality", "direction", "mult"] },
+    { "calculate": "datum['2025'] - datum['2019']", "as": "delta" },
+    { "calculate": "max(datum['2019'], datum['2025'])", "as": "label_x" },
+    {
+      "calculate": "datum.direction == 'Growth' ? '\\u00d7' + format(datum.mult, '.2f') + ' (+' + replace(format(datum.delta, '.3~s'), 'G', 'k') + ')' : '\\u00d7' + format(datum.mult, '.2f') + ' (' + replace(format(datum.delta, '.3~s'), 'G', 'k') + ')'",
+      "as": "chg_label"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "nationality",
+      "type": "nominal",
+      "title": null,
+      "axis": {
+        "domain": true,
+        "domainColor": "#d8d2c6",
+        "ticks": false,
+        "labelFontSize": 12,
+        "labelFontWeight": 600,
+        "labelColor": "#16302d"
+      },
+      "scale": { "padding": 0.32, "sort": { "field": "2025", "order": "descending" } }
+    },
+    "x": {
+      "type": "quantitative",
+      "title": "Enrolments",
+      "scale": { "type": "linear", "domain": [0, 290000], "nice": false },
+      "axis": {
+        "format": "~s",
+        "tickCount": 7,
+        "grid": true,
+        "gridColor": "#f0ece2",
+        "domain": false,
+        "labelFontSize": 11,
+        "labelColor": "#4a5f73"
+      }
+    },
+    "color": {
+      "field": "series",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": ["Initial", "Growth", "Decline"],
+        "range": ["#1a1a1a", "#2d8a3e", "#ea580c"]
+      },
+      "legend": {
+        "orient": "top",
+        "direction": "horizontal",
+        "title": null,
+        "labelFontSize": 11,
+        "symbolSize": 90,
+        "symbolStrokeWidth": 3,
+        "symbolType": {
+          "condition": { "test": "datum.value == 'Initial'", "value": "circle" },
+          "value": "stroke"
+        }
+      }
+    }
+  },
+  "layer": [
+    {
+      "description": "Dumbbell track between 2019 and 2025.",
+      "transform": [{ "calculate": "datum.direction", "as": "series" }],
+      "mark": { "type": "rule", "strokeWidth": 3, "opacity": 0.85 },
+      "encoding": {
+        "x": { "field": "2019" },
+        "x2": { "field": "2025" },
+        "tooltip": [
+          { "field": "nationality", "title": "Country" },
+          { "field": "2019", "title": "2019", "format": "," },
+          { "field": "2025", "title": "2025", "format": "," },
+          { "field": "chg_label", "title": "Change" }
+        ]
+      }
+    },
+    {
+      "description": "2019 endpoint (initial).",
+      "transform": [{ "calculate": "'Initial'", "as": "series" }],
+      "mark": { "type": "point", "filled": true, "size": 110 },
+      "encoding": {
+        "x": { "field": "2019" },
+        "stroke": { "value": "#ffffff" },
+        "strokeWidth": { "value": 1 }
+      }
+    },
+    {
+      "description": "2025 endpoint by direction.",
+      "transform": [{ "calculate": "datum.direction", "as": "series" }],
+      "mark": { "type": "point", "filled": true, "size": 130 },
+      "encoding": {
+        "x": { "field": "2025" },
+        "stroke": { "value": "#ffffff" },
+        "strokeWidth": { "value": 1 }
+      }
+    },
+    {
+      "description": "Change label at the right end of each track.",
+      "transform": [{ "calculate": "datum.direction", "as": "series" }],
+      "mark": { "type": "text", "align": "left", "dx": 12, "fontSize": 11, "fontWeight": 700 },
+      "encoding": {
+        "x": { "field": "label_x" },
+        "text": { "field": "chg_label", "type": "nominal" }
+      }
+    }
+  ],
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "labelFont": "Inter, sans-serif", "titleFont": "Inter, sans-serif" }
+  }
+}

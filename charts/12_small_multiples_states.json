@@ -1,8 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Small multiples showing each state's recovery indexed to its 2019 enrolments (2019 = 100). A dashed line marks the 2019 baseline.",
+  "width": "container",
   "data": { "url": "data/03b_state_year_indexed.csv" },
   "columns": 4,
+  "spacing": 18,
   "facet": {
     "field": "state_code",
     "type": "nominal",
@@ -11,14 +13,19 @@
     "header": { "labelFontSize": 12, "labelFontWeight": "bold", "labelColor": "#16302d" }
   },
   "spec": {
-    "width": 150,
-    "height": 110,
+    "height": 130,
     "layer": [
       {
         "description": "Baseline reference line at 100% (2019 level).",
         "data": { "values": [{ "y": 100 }] },
         "mark": { "type": "rule", "strokeDash": [4, 3], "color": "#b0466b", "strokeWidth": 1 },
-        "encoding": { "y": { "field": "y", "type": "quantitative" } }
+        "encoding": {
+          "y": {
+            "field": "y",
+            "type": "quantitative",
+            "scale": { "domain": [50, 180] }
+          }
+        }
       },
       {
         "mark": { "type": "area", "interpolate": "monotone", "opacity": 0.18, "color": "#2f8e85" },
@@ -33,8 +40,8 @@
             "field": "pct_of_2019",
             "type": "quantitative",
             "title": "% of 2019",
-            "scale": { "domainMin": 60 },
-            "axis": { "grid": false, "tickCount": 4 }
+            "scale": { "domain": [50, 180], "nice": false },
+            "axis": { "grid": false, "tickCount": 5 }
           }
         }
       },
@@ -42,7 +49,11 @@
         "mark": { "type": "line", "interpolate": "monotone", "strokeWidth": 2, "color": "#0c4a44" },
         "encoding": {
           "x": { "field": "year", "type": "quantitative" },
-          "y": { "field": "pct_of_2019", "type": "quantitative" },
+          "y": {
+            "field": "pct_of_2019",
+            "type": "quantitative",
+            "scale": { "domain": [50, 180], "nice": false }
+          },
           "tooltip": [
             { "field": "state", "type": "nominal", "title": "State" },
             { "field": "year", "type": "quantitative", "title": "Year", "format": "d" },
@@ -51,5 +62,12 @@
         }
       }
     ]
+  },
+  "resolve": {
+    "scale": { "y": "shared" },
+    "axis": { "y": "shared" }
+  },
+  "config": {
+    "view": { "stroke": null }
   }
 }

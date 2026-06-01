@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=17" />
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
@@ -45,7 +45,7 @@
     <!-- ============================ SECTION 1: THE BIG PICTURE ============================ -->
     <section class="story">
       <p class="section-num">01</p>
-      <h2>The big picture <span class="section-sub">Total enrolments &amp; new commencements, 2019&ndash;2025</span></h2>
+      <h2>The big picture</h2>
 
       <div class="grid-story">
         <aside class="story-card">
@@ -67,7 +67,6 @@
           <div class="viz" data-spec="charts/01_annual_line.json"></div>
           <figcaption>
             Total enrolments and new commencements, 2019&ndash;2025.
-            <a href="charts/01_annual_line.json">View spec</a>
           </figcaption>
         </figure>
       </div>
@@ -97,7 +96,7 @@
         <figure class="chart">
           <div class="viz" data-spec="charts/03_lollipop_top_countries.json"></div>
           <figcaption>
-            Top 10 source countries, 2025. <a href="charts/03_lollipop_top_countries.json">View spec</a>
+            Top 10 source countries, 2025.
           </figcaption>
         </figure>
         <aside class="story-card">
@@ -114,6 +113,7 @@
         </aside>
       </div>
 
+      <h3 class="block-head">A widening mix</h3>
       <p class="lede">
         The mix has been visibly shifting for years. China's share of the total is shrinking in
         relative terms, even as overall numbers reach new records. India, the Philippines, and a
@@ -124,7 +124,6 @@
         <div class="viz" data-spec="charts/04_stream_countries.json"></div>
         <figcaption>
           Top 10 source countries plus an "Other" residual, 2019&ndash;2025 (stream graph).
-          <a href="charts/04_stream_countries.json">View spec</a>
         </figcaption>
       </figure>
     </section>
@@ -145,7 +144,6 @@
         <figcaption>
           International students per 100,000 residents by state, 2025.
           Sources: Department of Education; ABS resident population, Sep 2025.
-          <a href="charts/05_australia_choropleth.json">View spec</a>
         </figcaption>
       </figure>
 
@@ -153,7 +151,7 @@
         <figure class="chart">
           <div class="viz" data-spec="charts/06_sector_donut.json"></div>
           <figcaption>
-            Enrolments by education sector, 2025. <a href="charts/06_sector_donut.json">View spec</a>
+            Enrolments by education sector, 2025.
           </figcaption>
         </figure>
         <aside class="story-card">
@@ -181,7 +179,6 @@
         <div class="viz" data-spec="charts/07_state_sector_stacked.json"></div>
         <figcaption>
           Sector share within each state, 2025 (100% stacked bar).
-          <a href="charts/07_state_sector_stacked.json">View spec</a>
         </figcaption>
       </figure>
     </section>
@@ -203,7 +200,6 @@
         <div class="viz" data-spec="charts/08_country_sector_heatmap.json"></div>
         <figcaption>
           Top 15 source countries &times; education sector, 2025 (heatmap).
-          <a href="charts/08_country_sector_heatmap.json">View spec</a>
         </figcaption>
       </figure>
 
@@ -234,7 +230,6 @@
         <figcaption>
           Top 10 source countries to their three largest fields of study, 2025
           (Sankey; each country's top three field flows).
-          <a href="data/09_country_field_heatmap.csv">View data</a>
         </figcaption>
       </figure>
 
@@ -255,10 +250,20 @@
         accounts for the remaining 14%, often as a stepping stone into one of the three larger
         pathways.
       </p>
+      <p class="treemap-subhead">All ten qualifications shown as labelled rectangles; colour groups
+        them into four pathway tiers. Rectangle area is proportional to the number of students.</p>
       <figure class="chart wide">
-        <div class="viz" data-spec="charts/10_aqf_levels.json"></div>
+        <div
+          id="treemap-pathways"
+          class="treemap"
+          data-src="data/11b_pathway_qualifications.csv"
+          role="img"
+          aria-label="Treemap of international student enrolments by qualification, grouped into four pathway tiers, 2025."
+        ></div>
         <figcaption>
-          Enrolments by qualification level, 2025. <a href="charts/10_aqf_levels.json">View spec</a>
+          Enrolments by qualification, grouped into pathway tiers, 2025.
+          Cert I/II (1,207 students) is the thin strip at the right of the Vocational tier &mdash;
+          too small to label inside.
         </figcaption>
       </figure>
     </section>
@@ -266,76 +271,91 @@
     <!-- ============================ SECTION 5: WHAT CHANGED ============================ -->
     <section class="story">
       <p class="section-num">05</p>
-      <h2>Bangladesh quadrupled, China didn&rsquo;t</h2>
+      <h2>The post-pandemic reshuffle</h2>
       <p class="lede">
-        Comparing 2019 with 2025 directly shows who recovered and who did not. Most top-ten
-        sources grew &mdash; Bangladesh more than quadrupled &mdash; but China remains below its
-        pre-COVID peak and Brazil is the only major source in sustained decline.
+        Comparing 2019 with 2025 shows who recovered and who did not. Most top-ten countries grew.
+        The fastest growth came from Bangladesh, which more than quadrupled, and the Philippines,
+        which more than doubled. The largest absolute gain came from India, which added 39,000
+        students. Two countries moved the other way: China is still below its pre-COVID peak, and
+        Brazil is the only major source in sustained decline.
       </p>
       <figure class="chart wide">
-        <div class="viz" data-spec="charts/11_slope_2019_2025.json"></div>
+        <div class="viz" data-spec="charts/11_dumbbell_2019_2025.json"></div>
         <figcaption>
-          Top 10 source countries, 2019 vs 2025 (slope chart; labels show the growth multiplier).
-          <a href="charts/11_slope_2019_2025.json">View spec</a>
+          Top 10 source countries, 2019 vs 2025 (dumbbell chart; linear scale; end labels show
+          multiplier and absolute change). Black dots = 2019 (initial); green = growth, orange = decline.
         </figcaption>
       </figure>
 
       <p class="lede">
-        Finally, indexing each state to its own 2019 level (2019 = 100) lets us compare the
-        <em>shape</em> of recovery without large states drowning out small ones. Most states
-        overshot their pre-COVID baseline by 2024; New South Wales recovered the most modestly,
-        while Western Australia shows the most dramatic rebound.
+        By indexing each state to its own 2019 level, we can see the shape of recovery without large
+        states drowning out small ones. Most states overshot their pre-COVID baseline by 2024.
+        Western Australia and the Northern Territory rebounded most dramatically, driven by strong
+        VET demand. New South Wales recovered most modestly. Tasmania is the outlier, with
+        international student numbers still falling.
       </p>
       <figure class="chart wide">
         <div class="viz" data-spec="charts/12_small_multiples_states.json"></div>
         <figcaption>
           State recovery indexed to 2019 (dashed line = 2019 baseline; small multiples).
-          <a href="charts/12_small_multiples_states.json">View spec</a>
         </figcaption>
       </figure>
     </section>
 
+    <!-- ============================ SECTION 6: FINAL SUMMARY ============================ -->
+    <section class="story">
+      <p class="section-num">06</p>
+      <h2>Final Summary</h2>
+      <aside class="story-card story-card-wide">
+        <p>
+          Australia&rsquo;s international student story is one of recovery, diversification, and
+          concentration.
+        </p>
+        <p>
+          Over the past six years, the sector has weathered a global crisis and emerged larger than
+          ever, with <strong class="emphasis">1.06 million students</strong> enrolled in 2025. But the shape of that
+          cohort has changed. China remains the largest single source but has not returned to its
+          pre-COVID peak, while Bangladesh, the Philippines, and a long tail of smaller-source
+          countries have grown sharply. Australian international education is more diverse than ever.
+        </p>
+        <p>
+          The destinations have stayed concentrated: <strong class="emphasis">New South Wales and Victoria still host
+          two-thirds</strong> of all enrolments, with the Australian Capital Territory punching well
+          above its weight per capita. But where students go is only part of the story &mdash;
+          what they study reveals at least four distinct migration patterns, from Chinese
+          postgraduates in business and engineering, to Filipino students in vocational health and
+          aged care, to Latin American students moving through English-language pathways into trades.
+        </p>
+        <p>
+          The image of &ldquo;international students&rdquo; as a single group of university
+          undergraduates is incomplete. The real cohort is a mix of three roughly equal pathways
+          &mdash; postgraduate, undergraduate, and vocational &mdash; supported by a fourth tier of
+          English-language and school-level study. Each pathway connects to a different part of the
+          Australian economy, and each has its own geography, sector, and country profile.
+        </p>
+        <p>
+          What started as a single headline number &mdash; one million students &mdash; turns out, on
+          closer inspection, to be many quieter stories.
+        </p>
+      </aside>
+    </section>
+
     <!-- ============================ FOOTER ============================ -->
     <footer class="footer">
-      <h2 class="footer-title">About this visualisation</h2>
-      <div class="footer-grid">
-        <div>
-          <h3>Why &amp; who</h3>
-          <p>
-            International education shapes the cities most Australians live in and is constantly in
-            the political conversation, yet the underlying patterns are rarely shown. This page is
-            built for a general Australian audience, avoiding jargon and statistical assumptions.
-          </p>
-        </div>
-        <div>
-          <h3>Data sources</h3>
-          <p>
-            Department of Education, <em>International Student Data</em> (January 2026 release),
-            <a href="https://www.education.gov.au/international-education-data-and-research" target="_blank" rel="noopener">education.gov.au</a>.
-            Australian Bureau of Statistics, <em>National, state and territory population</em>
-            (Sep 2025 quarter),
-            <a href="https://www.abs.gov.au/statistics/people/population" target="_blank" rel="noopener">abs.gov.au</a>.
-            World boundaries: vega-datasets <code>world-110m</code>.
-          </p>
-        </div>
-        <div>
-          <h3>How</h3>
-          <p>
-            All charts and maps are built with Vega-Lite; each specification is in the
-            <code>charts/</code> folder of this repository and is linked beneath every figure. The
-            per-capita map and the two heatmaps use measures derived by combining the two sources.
-          </p>
-        </div>
-      </div>
       <p class="meta">
-        <strong>Author:</strong> [Your Name], Monash University &nbsp;&middot;&nbsp;
+        <strong>Author:</strong> Michael Alexander, Monash University &nbsp;&middot;&nbsp;
         <strong>Created:</strong> May 2026 &nbsp;&middot;&nbsp;
-        <strong>AI acknowledgement:</strong> Generative AI was used for planning, drafting narrative
-        text and code assistance. All data aggregation and design decisions are the author's own.
+        <strong>Data sources:</strong> Department of Education,
+        <em>International Student Data</em> (January 2026 release),
+        <a href="https://www.education.gov.au/international-education-data-and-research" target="_blank" rel="noopener">education.gov.au</a>;
+        Australian Bureau of Statistics, <em>National, state and territory population</em>
+        (September 2025 quarter),
+        <a href="https://www.abs.gov.au/statistics/people/population" target="_blank" rel="noopener">abs.gov.au</a>;
+        world map boundaries from Vega Datasets <code>world-110m</code>.
       </p>
     </footer>
   </main>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>
