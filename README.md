@@ -6,7 +6,6 @@ sectors where they study, to how the pattern changed after the pandemic.
 
 **Author:** Michael Alexander · **Created:** May 2026
 
-> Replace `[Your Name]` here and in the footer of `index.html` before submitting.
 
 ## View it
 
