@@ -39,6 +39,26 @@
       }
     },
     {
+      "description": "Invisible hit target so ACT (too small to hover inside NSW) still shows a tooltip.",
+      "data": { "url": "data/02_state_2025.csv" },
+      "transform": [
+        { "filter": "datum.state_code === 'ACT'" },
+        { "calculate": "149.1", "as": "lon" },
+        { "calculate": "-35.5", "as": "lat" }
+      ],
+      "mark": { "type": "circle", "fillOpacity": 0, "strokeWidth": 0, "size": 1200, "cursor": "pointer" },
+      "encoding": {
+        "longitude": { "field": "lon", "type": "quantitative" },
+        "latitude": { "field": "lat", "type": "quantitative" },
+        "tooltip": [
+          { "field": "state", "type": "nominal", "title": "State" },
+          { "field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": "," },
+          { "field": "population_2025", "type": "quantitative", "title": "Population", "format": "," },
+          { "field": "per_100k", "type": "quantitative", "title": "Per 100,000", "format": ",.0f" }
+        ]
+      }
+    },
+    {
       "description": "State code labels positioned at approximate state centroids.",
       "data": {
         "values": [
@@ -52,7 +72,7 @@
           { "code": "ACT", "lon": 149.1, "lat": -35.5 }
         ]
       },
-      "mark": { "type": "text", "fontSize": 11, "fontWeight": "bold", "fill": "#1a2e2c" },
+      "mark": { "type": "text", "fontSize": 11, "fontWeight": "bold", "fill": "#1a2e2c", "interactive": false },
       "encoding": {
         "longitude": { "field": "lon", "type": "quantitative" },
         "latitude": { "field": "lat", "type": "quantitative" },

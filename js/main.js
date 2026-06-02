@@ -512,10 +512,10 @@ function drawTreemap(el, rows) {
     byTier.map(([t, arr]) => [t, d3.sum(arr, (d) => d.value)])
   );
 
-  // Cell rectangle per tier. Two rows of two; columns split by tier total.
+  // Cell rectangle per tier. Top: Postgraduate + English & Schools; bottom: Vocational + Undergraduate.
   const rows2 = [
-    ["Postgraduate", "Vocational"],
-    ["Undergraduate", "English & Schools"]
+    ["Postgraduate", "English & Schools"],
+    ["Vocational", "Undergraduate"]
   ];
   const cells = new Map();
   if (stacked) {

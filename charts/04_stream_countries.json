@@ -26,7 +26,7 @@
       "title": "Country",
       "scale": {
         "domain": ["China", "India", "Nepal", "Philippines", "Vietnam", "Colombia", "Bangladesh", "Pakistan", "Indonesia", "Brazil", "Other"],
-        "range": ["#4e79a7", "#f28e2b", "#59a14f", "#e15759", "#76b7b2", "#edc948", "#b07aa1", "#ff9da7", "#9c755f", "#bab0ac", "#e0e0e0"]
+        "range": ["#4e79a7", "#f28e2b", "#59a14f", "#984ea3", "#76b7b2", "#edc948", "#b07aa1", "#ff9da7", "#9c755f", "#bab0ac", "#e0e0e0"]
       },
       "legend": { "orient": "right", "symbolType": "square" }
     },

@@ -84,7 +84,7 @@
     {
       "description": "2019 endpoint (initial).",
       "transform": [{ "calculate": "'Initial'", "as": "series" }],
-      "mark": { "type": "point", "filled": true, "size": 120, "opacity": 1 },
+      "mark": { "type": "point", "filled": true, "size": 85, "opacity": 1 },
       "encoding": {
         "x": { "field": "2019" },
         "stroke": { "value": "#0a0a0a" },
@@ -94,7 +94,7 @@
     {
       "description": "2025 endpoint by direction.",
       "transform": [{ "calculate": "datum.direction", "as": "series" }],
-      "mark": { "type": "point", "filled": true, "size": 140, "opacity": 1 },
+      "mark": { "type": "point", "filled": true, "size": 100, "opacity": 1 },
       "encoding": {
         "x": { "field": "2025" },
         "stroke": { "field": "series", "type": "nominal", "scale": { "domain": ["Growth", "Decline"], "range": ["#15803d", "#c2410c"] }, "legend": null },

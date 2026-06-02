@@ -17,7 +17,7 @@
       "sort": ["Higher Education", "VET", "ELICOS", "Non-award", "Schools"],
       "scale": {
         "domain": ["Higher Education", "VET", "ELICOS", "Schools", "Non-award"],
-        "range": ["#1b6f6a", "#e08a3c", "#4f86c6", "#b0466b", "#9aa0a6"]
+        "range": ["#1b6f6a", "#e08a3c", "#4f86c6", "#984ea3", "#9aa0a6"]
       },
       "legend": { "orient": "right" }
     },
@@ -43,7 +43,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Higher Education", "VET", "ELICOS", "Schools", "Non-award"],
-            "range": ["#1b6f6a", "#e08a3c", "#4f86c6", "#b0466b", "#9aa0a6"]
+            "range": ["#1b6f6a", "#e08a3c", "#4f86c6", "#984ea3", "#9aa0a6"]
           },
           "legend": null
         }

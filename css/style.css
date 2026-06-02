@@ -228,21 +228,21 @@ h2 {
   hyphens: auto;
 }
 
-/* Sankey “How to read this” card — 20% smaller */
+/* Sankey “How to read this” card — compact chrome, body text matches other cards */
 .story:has(#sankey-country-field) > .story-card-wide {
-  padding: 19px 19px 18px;
-  margin-bottom: 14px;
+  padding: 11px 16px 10px;
+  margin-bottom: 12px;
 }
 
 .story:has(#sankey-country-field) > .story-card-wide h3 {
   font-size: clamp(16px, 1.76vw, 19px);
-  margin-bottom: 13px;
+  margin-bottom: 8px;
 }
 
 .story:has(#sankey-country-field) > .story-card-wide p {
-  font-size: 12.5px;
-  line-height: 1.55;
-  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 0;
 }
 
 .lede {
@@ -253,7 +253,8 @@ h2 {
   width: 100%;
   margin: 0 0 16px;
   text-align: justify;
-  hyphens: auto;
+  hyphens: none;
+  text-wrap: pretty;
 }
 
 .lede em { color: var(--navy); font-style: italic; }
@@ -452,14 +453,14 @@ code {
 }
 
 .sankey-tip {
-  margin: 14px 0 0;
-  padding: 12px 16px;
+  margin: 10px 0 0;
+  padding: 8px 12px;
   background: #fff5e1;
   border: 1px solid #ecd9a8;
   border-left: 3px solid var(--gold);
   border-radius: 8px;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--ink);
   text-align: left;
 }
