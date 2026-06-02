@@ -1,71 +1,127 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Small multiples showing each state's recovery indexed to its 2019 enrolments (2019 = 100). A dashed line marks the 2019 baseline.",
-  "width": "container",
-  "data": { "url": "data/03b_state_year_indexed.csv" },
-  "columns": 4,
-  "spacing": 18,
+  "description": "Diverging area small multiples (2x3): six states indexed to 2019 (= 0). Green = growth above baseline, orange = decline below baseline. Areas use a densified series so the colour split hugs the line at the true zero crossing.",
+  "data": { "url": "data/03c_state_indexed_dense.csv" },
+  "transform": [
+    { "filter": { "field": "state_code", "oneOf": ["NSW", "VIC", "QLD", "WA", "ACT", "TAS"] } }
+  ],
+  "columns": 3,
+  "spacing": 24,
+  "align": "all",
+  "center": true,
   "facet": {
     "field": "state_code",
     "type": "nominal",
     "title": null,
-    "sort": ["NSW", "VIC", "QLD", "WA", "SA", "ACT", "TAS", "NT"],
-    "header": { "labelFontSize": 12, "labelFontWeight": "bold", "labelColor": "#16302d" }
+    "sort": ["NSW", "VIC", "QLD", "WA", "ACT", "TAS"],
+    "header": { "labelFontSize": 13, "labelFontWeight": "bold", "labelColor": "#16302d" }
   },
   "spec": {
-    "height": 130,
+    "width": 268,
+    "height": 210,
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "quantitative",
+        "title": null,
+        "scale": { "domain": [2018.25, 2025.75], "nice": false },
+        "axis": {
+          "format": "d",
+          "values": [2019, 2020, 2021, 2022, 2023, 2024, 2025],
+          "labelFontSize": 10,
+          "labelPadding": 5,
+          "grid": false,
+          "labelColor": "#4a5f73"
+        }
+      },
+      "y": {
+        "type": "quantitative",
+        "title": "Percentage Change (%)",
+        "scale": { "domain": [-80, 80], "nice": false, "clamp": true },
+        "axis": {
+          "values": [-80, -60, -40, -20, 0, 20, 40, 60, 80],
+          "format": "d",
+          "grid": true,
+          "gridColor": "#e8e4dc",
+          "tickBand": "extent",
+          "labelColor": "#4a5f73"
+        }
+      }
+    },
     "layer": [
       {
-        "description": "Baseline reference line at 100% (2019 level).",
-        "data": { "values": [{ "y": 100 }] },
-        "mark": { "type": "rule", "strokeDash": [4, 3], "color": "#b0466b", "strokeWidth": 1 },
+        "description": "Green area above the 2019 baseline (growth).",
+        "mark": { "type": "area", "interpolate": "linear", "color": "#3f9c5a", "opacity": 0.55, "clip": true },
         "encoding": {
-          "y": {
-            "field": "y",
-            "type": "quantitative",
-            "scale": { "domain": [50, 180] }
-          }
+          "y": { "field": "above" },
+          "y2": { "datum": 0 }
         }
       },
       {
-        "mark": { "type": "area", "interpolate": "monotone", "opacity": 0.18, "color": "#2f8e85" },
+        "description": "Orange-red area below the 2019 baseline (decline).",
+        "mark": { "type": "area", "interpolate": "linear", "color": "#e35a3a", "opacity": 0.55, "clip": true },
         "encoding": {
-          "x": {
-            "field": "year",
-            "type": "quantitative",
-            "title": null,
-            "axis": { "format": "d", "values": [2019, 2025], "grid": false }
-          },
-          "y": {
-            "field": "pct_of_2019",
-            "type": "quantitative",
-            "title": "% of 2019",
-            "scale": { "domain": [50, 180], "nice": false },
-            "axis": { "grid": false, "tickCount": 5 }
-          }
+          "y": { "field": "below" },
+          "y2": { "datum": 0 }
         }
       },
       {
-        "mark": { "type": "line", "interpolate": "monotone", "strokeWidth": 2, "color": "#0c4a44" },
+        "description": "Dotted black baseline at 2019 = 0.",
+        "mark": { "type": "rule", "strokeDash": [3, 3], "color": "#111111", "strokeWidth": 1 },
+        "encoding": { "y": { "datum": 0 } }
+      },
+      {
+        "description": "Black line tracking the index over time.",
+        "mark": { "type": "line", "interpolate": "linear", "strokeWidth": 1.8, "color": "#111111", "clip": true },
+        "encoding": { "y": { "field": "diff" } }
+      },
+      {
+        "description": "Black data points at each whole year.",
+        "transform": [{ "filter": "datum.year == round(datum.year)" }],
+        "mark": { "type": "point", "filled": true, "size": 42, "color": "#111111" },
         "encoding": {
-          "x": { "field": "year", "type": "quantitative" },
-          "y": {
-            "field": "pct_of_2019",
-            "type": "quantitative",
-            "scale": { "domain": [50, 180], "nice": false }
-          },
+          "y": { "field": "diff" },
           "tooltip": [
             { "field": "state", "type": "nominal", "title": "State" },
             { "field": "year", "type": "quantitative", "title": "Year", "format": "d" },
+            { "field": "diff", "type": "quantitative", "title": "Change vs 2019", "format": "+.1f" },
             { "field": "pct_of_2019", "type": "quantitative", "title": "% of 2019", "format": ".1f" }
           ]
+        }
+      },
+      {
+        "description": "Invisible color encoding to produce the Growth/Decline legend swatches.",
+        "data": {
+          "values": [
+            { "year": 2019, "diff": 0, "category": "Growth" },
+            { "year": 2019, "diff": 0, "category": "Decline" }
+          ]
+        },
+        "mark": { "type": "square", "size": 90, "opacity": 0 },
+        "encoding": {
+          "y": { "datum": 0 },
+          "color": {
+            "field": "category",
+            "type": "nominal",
+            "title": null,
+            "scale": { "domain": ["Growth", "Decline"], "range": ["#3f9c5a", "#e35a3a"] },
+            "legend": {
+              "orient": "top",
+              "direction": "horizontal",
+              "symbolType": "square",
+              "symbolSize": 110,
+              "symbolOpacity": 0.85,
+              "labelFontSize": 12,
+              "labelColor": "#16302d"
+            }
+          }
         }
       }
     ]
   },
   "resolve": {
-    "scale": { "y": "shared" },
-    "axis": { "y": "shared" }
+    "scale": { "x": "shared", "y": "shared" },
+    "axis": { "x": "independent", "y": "shared" }
   },
   "config": {
     "view": { "stroke": null }

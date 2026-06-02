@@ -482,7 +482,10 @@ async function renderTreemap() {
     return;
   }
 
-  const rows = raw.filter((d) => d.value > 0);
+  // Cert I/II is omitted: too few students to show fairly in a tier treemap.
+  const rows = raw.filter(
+    (d) => d.value > 0 && d.qualification !== "Cert I/II"
+  );
   drawTreemap(el, rows);
 
   if (!el.__treemapResizeBound) {

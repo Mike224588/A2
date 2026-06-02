@@ -2,8 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Horizontal dumbbell chart: top 10 source countries, 2019 vs 2025 on a linear enrolment scale. Black dots = 2019 (initial); 2025 dots and connecting lines are green for growth or orange for decline.",
   "width": "container",
-  "height": 540,
-  "padding": { "left": 8, "right": 92 },
+  "height": 486,
+  "padding": { "left": 8, "right": 83 },
   "data": { "url": "data/12_slope_calc.csv" },
   "transform": [
     { "pivot": "year", "value": "enrolments", "groupby": ["nationality", "direction", "mult"] },
@@ -49,7 +49,7 @@
       "title": null,
       "scale": {
         "domain": ["Initial", "Growth", "Decline"],
-        "range": ["#1a1a1a", "#2d8a3e", "#ea580c"]
+        "range": ["#0a0a0a", "#15803d", "#c2410c"]
       },
       "legend": {
         "orient": "top",
@@ -69,7 +69,7 @@
     {
       "description": "Dumbbell track between 2019 and 2025.",
       "transform": [{ "calculate": "datum.direction", "as": "series" }],
-      "mark": { "type": "rule", "strokeWidth": 3, "opacity": 0.85 },
+      "mark": { "type": "rule", "strokeWidth": 3, "opacity": 1 },
       "encoding": {
         "x": { "field": "2019" },
         "x2": { "field": "2025" },
@@ -84,21 +84,21 @@
     {
       "description": "2019 endpoint (initial).",
       "transform": [{ "calculate": "'Initial'", "as": "series" }],
-      "mark": { "type": "point", "filled": true, "size": 110 },
+      "mark": { "type": "point", "filled": true, "size": 120, "opacity": 1 },
       "encoding": {
         "x": { "field": "2019" },
-        "stroke": { "value": "#ffffff" },
-        "strokeWidth": { "value": 1 }
+        "stroke": { "value": "#0a0a0a" },
+        "strokeWidth": { "value": 1.5 }
       }
     },
     {
       "description": "2025 endpoint by direction.",
       "transform": [{ "calculate": "datum.direction", "as": "series" }],
-      "mark": { "type": "point", "filled": true, "size": 130 },
+      "mark": { "type": "point", "filled": true, "size": 140, "opacity": 1 },
       "encoding": {
         "x": { "field": "2025" },
-        "stroke": { "value": "#ffffff" },
-        "strokeWidth": { "value": 1 }
+        "stroke": { "field": "series", "type": "nominal", "scale": { "domain": ["Growth", "Decline"], "range": ["#15803d", "#c2410c"] }, "legend": null },
+        "strokeWidth": { "value": 1.5 }
       }
     },
     {

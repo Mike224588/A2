@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=17" />
+  <link rel="stylesheet" href="css/style.css?v=21" />
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
@@ -123,7 +123,7 @@
       <figure class="chart wide">
         <div class="viz" data-spec="charts/04_stream_countries.json"></div>
         <figcaption>
-          Top 10 source countries plus an "Other" residual, 2019&ndash;2025 (stream graph).
+          Top 10 source countries plus an "Other" residual, 2019&ndash;2025.
         </figcaption>
       </figure>
     </section>
@@ -178,7 +178,7 @@
       <figure class="chart wide">
         <div class="viz" data-spec="charts/07_state_sector_stacked.json"></div>
         <figcaption>
-          Sector share within each state, 2025 (100% stacked bar).
+          Sector share within each state, 2025.
         </figcaption>
       </figure>
     </section>
@@ -199,7 +199,7 @@
       <figure class="chart wide">
         <div class="viz" data-spec="charts/08_country_sector_heatmap.json"></div>
         <figcaption>
-          Top 15 source countries &times; education sector, 2025 (heatmap).
+          Top 15 source countries &times; education sector, 2025.
         </figcaption>
       </figure>
 
@@ -262,8 +262,6 @@
         ></div>
         <figcaption>
           Enrolments by qualification, grouped into pathway tiers, 2025.
-          Cert I/II (1,207 students) is the thin strip at the right of the Vocational tier &mdash;
-          too small to label inside.
         </figcaption>
       </figure>
     </section>
@@ -289,15 +287,16 @@
 
       <p class="lede">
         By indexing each state to its own 2019 level, we can see the shape of recovery without large
-        states drowning out small ones. Most states overshot their pre-COVID baseline by 2024.
-        Western Australia and the Northern Territory rebounded most dramatically, driven by strong
-        VET demand. New South Wales recovered most modestly. Tasmania is the outlier, with
-        international student numbers still falling.
+        states drowning out small ones. Most states had returned to or exceeded their pre-COVID
+        baseline by 2024. Western Australia rebounded most dramatically, driven by strong VET demand.
+        Queensland and Victoria show the most modest recoveries, while Tasmania is the clear
+        outlier, with international student numbers still falling.
       </p>
       <figure class="chart wide">
         <div class="viz" data-spec="charts/12_small_multiples_states.json"></div>
         <figcaption>
-          State recovery indexed to 2019 (dashed line = 2019 baseline; small multiples).
+          Percentage change from 2019 enrolments by state. Zero represents each state&rsquo;s 2019
+          baseline; green indicates growth above 2019, orange indicates decline below 2019.
         </figcaption>
       </figure>
     </section>
@@ -343,7 +342,7 @@
     <!-- ============================ FOOTER ============================ -->
     <footer class="footer">
       <p class="meta">
-        <strong>Author:</strong> Michael Alexander, Monash University &nbsp;&middot;&nbsp;
+        <strong>Author:</strong> Michael Alexander (35100850), Monash University &nbsp;&middot;&nbsp;
         <strong>Created:</strong> May 2026 &nbsp;&middot;&nbsp;
         <strong>Data sources:</strong> Department of Education,
         <em>International Student Data</em> (January 2026 release),
@@ -356,6 +355,6 @@
     </footer>
   </main>
 
-  <script src="js/main.js?v=10"></script>
+  <script src="js/main.js?v=11"></script>
 </body>
 </html>

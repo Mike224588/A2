@@ -228,6 +228,23 @@ h2 {
   hyphens: auto;
 }
 
+/* Sankey “How to read this” card — 20% smaller */
+.story:has(#sankey-country-field) > .story-card-wide {
+  padding: 19px 19px 18px;
+  margin-bottom: 14px;
+}
+
+.story:has(#sankey-country-field) > .story-card-wide h3 {
+  font-size: clamp(16px, 1.76vw, 19px);
+  margin-bottom: 13px;
+}
+
+.story:has(#sankey-country-field) > .story-card-wide p {
+  font-size: 12.5px;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
 .lede {
   font-size: 17.5px;
   line-height: 1.6;
@@ -314,6 +331,20 @@ h2 {
 }
 
 .viz { width: 100%; }
+
+/* Fixed-size small multiples: center within the wide chart container */
+.viz[data-spec*="12_small_multiples"] .vega-embed {
+  display: flex;
+  justify-content: center;
+}
+
+/* Dumbbell chart: 10% smaller than full width */
+.viz[data-spec*="11_dumbbell"] {
+  width: 90%;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .viz.map { min-height: 0; }
 
