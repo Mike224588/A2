@@ -4,7 +4,7 @@ An interactive data story built for **FIT2179 Data Visualisation 2** (Monash Uni
 It follows international students in Australia from their countries of origin, to the states and
 sectors where they study, to how the pattern changed after the pandemic.
 
-**Author:** [Your Name] · **Created:** May 2026
+**Author:** Michael Alexander · **Created:** May 2026
 
 > Replace `[Your Name]` here and in the footer of `index.html` before submitting.
 
